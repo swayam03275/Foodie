@@ -7,10 +7,12 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Footer from './components/Footer/Footer'
 import AppDownload from './components/AppDownlad/AppDownload'
 import LoginPopup from './components/LoginPopup/LoginPopup'
+import ThemeContextProvider from './components/context/ThemeContext'
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false)
   return (
+    <ThemeContextProvider>
     <>
       {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
       <div className='app'>
@@ -24,6 +26,7 @@ const App = () => {
         <Footer/>
       </div>
     </>
+    </ThemeContextProvider>
     
   )
 }
