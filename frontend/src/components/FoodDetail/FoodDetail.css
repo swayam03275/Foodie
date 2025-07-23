@@ -97,6 +97,35 @@
     transform: scale(1.05);
 }
 
+.food-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.food-item-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.view-btn {
+    background-color: red;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: #c70000;
+}
+
+
 @media (max-width: 768px) {
     .food-detail-container {
         flex-direction: column;
