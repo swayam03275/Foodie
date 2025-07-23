@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
@@ -28,6 +29,7 @@ const App = () => {
           <Footer />
         </div>
       </>
+
     </ThemeContextProvider>
   );
 };
