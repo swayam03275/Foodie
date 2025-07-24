@@ -123,6 +123,7 @@ body{
 }
 
 @media (max-width:750px) {
+   
     .navbar-menu{
         display: none;
     }
@@ -153,6 +154,9 @@ body{
 }
 
 @media (max-width: 750px) {
+  .navbar{
+    padding: 20px 40px;
+  }
   .hamburger {
     display: block;
   }
