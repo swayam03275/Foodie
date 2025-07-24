@@ -1,19 +1,21 @@
 import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { food_list } from "../../assets/frontend_assets/assets";
-import { FaUtensils, FaDollarSign, FaListUl, FaStar, FaShoppingCart } from "react-icons/fa";
+import { FaDollarSign, FaListUl, FaStar, FaShoppingCart } from "react-icons/fa";
 import { StoreContext } from "../context/StoreContext";
 import "./FoodDetail.css";
 
 const FoodDetail = () => {
-  const { addToCart } = useContext(StoreContext);
+  const { addToCart, food_list } = useContext(StoreContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const { id } = useParams();
-  const foodItem = food_list.find(item => item._id === id);
+  const foodItem = food_list.find(item => item._id === id);  // Use food_list from context
+  console.log("URL ID:", id);
+console.log("Food List IDs:", food_list.map(item => item._id));
+
 
   if (!foodItem) {
     return <div className="food-detail">No food item found.</div>;

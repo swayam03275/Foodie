@@ -1,19 +1,18 @@
 import { createContext, useState } from "react";
 import { food_list } from "../../assets/frontend_assets/assets";
-import { toast } from 'react-hot-toast';
+import toast from "react-hot-toast";
+export const StoreContext = createContext(null);
 
-export const StoreContext= createContext(null)
-
-const StoreContextProvider = (props) =>{
+const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const addToCart = (itemId) => {
-        if(!cartItems[itemId]) {
-            setCartItems((prev) => ({...prev,[itemId] : 1}));
-        }else{
-            setCartItems((prev) => ({...prev,[itemId] : prev[itemId]+1}));
+        if (!cartItems[itemId]) {
+            setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+        } else {
+            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         }
         toast.success('Item added to cart!');
-    }
+    };
 
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({...prev,[itemId] : prev[itemId]-1}));
