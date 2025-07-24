@@ -66,7 +66,7 @@ const Navbar = ({ setShowLogin }) => {
         <button onClick={toggleTheme}>
           {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
         </button>
-        <img src={assets.search_icon} alt="search" />
+        <img src={assets.search_icon}  alt="search" />
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="cart" />
