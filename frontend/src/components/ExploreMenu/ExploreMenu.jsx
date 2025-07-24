@@ -1,8 +1,8 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./ExploreMenu.css";
-import {menu_list} from "../../assets/frontend_assets/assets";
+import { menu_list } from "../../assets/frontend_assets/assets";
 
-const ExploreMenu = ({category, setCategory}) => {
+const ExploreMenu = ({ category, setCategory }) => {
   const scrollRef = useRef(null);
   const intervalRef = useRef(null);
   const [paused, setPaused] = useState(false);
@@ -38,11 +38,11 @@ const ExploreMenu = ({category, setCategory}) => {
   useEffect(() => {
     startAutoScroll();
     return () => clearInterval(intervalRef.current);
-  }, []);
+  }, [paused]); // Added paused dependency
 
   return (
     <div className="explore-menu" id="explore-menu">
-      <h1>Explore Our Menu</h1>
+      <h1 style={{ color: 'var(--text-color)' }}>Explore Our Menu</h1>
       <p className="explore-menu-text">
         Choose from a diverse menu featuring a delectable array of dishes. Our
         mission is to satisfy your cravings and elevate your dining experience,
@@ -53,41 +53,28 @@ const ExploreMenu = ({category, setCategory}) => {
         <button className="arrow left" onClick={() => scroll("left")}>
           &lt;
         </button>
+        
         <div className="explore-menu-list" ref={scrollRef}>
-          {[...menu_list, ...menu_list].map(
-            (
-              item,
-              index //Duplicated the images to create a infinite scroll effect
-            ) => (
-              <div
-                onClick={() =>
-                  setCategory(
-                    category === item.menu_name ? "All" : item.menu_name
-                  )
-                }
-                key={index}
-                className="explore-menu-list-item"
-              >
-                <img
-                  className={category === item.menu_name ? "active" : ""}
-                  src={item.menu_image}
-                  alt=""
-                />
-                <p>{item.menu_name}</p>
-              </div>
-    <div className='explore-menu' id='explore-menu'>   
-      <h1 style={{ color: 'var(--text-color)' }}>Explore Our Menu</h1>
-      <p className='explore-menu-text'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time</p>
-      <div className="explore-menu-list">
-        {menu_list.map((item,index)=>{
-            return (
-                <div onClick={()=>setCategory(category===item.menu_name ? "All":item.menu_name)} key={index} className="explore-menu-list-item">
-                    <img className={category===item.menu_name? "active":""} src={item.menu_image} alt="" />
-                    <p>{item.menu_name}</p>
-                </div>
-            )
-          )}
+          {[...menu_list, ...menu_list].map((item, index) => (
+            <div
+              onClick={() =>
+                setCategory(
+                  category === item.menu_name ? "All" : item.menu_name
+                )
+              }
+              key={`${item.menu_name}-${index}`} // Better key for duplicated items
+              className="explore-menu-list-item"
+            >
+              <img
+                className={category === item.menu_name ? "active" : ""}
+                src={item.menu_image}
+                alt={item.menu_name}
+              />
+              <p>{item.menu_name}</p>
+            </div>
+          ))}
         </div>
+        
         <button className="arrow right" onClick={() => scroll("right")}>
           &gt;
         </button>
@@ -97,4 +84,5 @@ const ExploreMenu = ({category, setCategory}) => {
     </div>
   );
 };
+
 export default ExploreMenu;
