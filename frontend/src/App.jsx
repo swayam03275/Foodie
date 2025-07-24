@@ -10,7 +10,12 @@ import AppDownload from "./components/AppDownlad/AppDownload";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import ThemeContextProvider from "./components/context/ThemeContext";
 import FoodDetail from "./components/FoodDetail/FoodDetail";
+
 import { Toaster } from "react-hot-toast";
+
+import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
+import ScrollToTop from './components/ScrollToTop';
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   return (
@@ -18,6 +23,7 @@ const App = () => {
       <>
         <Toaster position="top-right" reverseOrder={false} />
         {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+         <ScrollToTop />
         <div className="app">
           <Navbar setShowLogin={setShowLogin} />
           <Routes>
@@ -26,6 +32,7 @@ const App = () => {
             <Route path="/order" element={<PlaceOrder />} />
             <Route path="/food/:id" element={<FoodDetail />}></Route>
           </Routes>
+           <CartSummaryBar />
           <AppDownload />
           <Footer />
         </div>
