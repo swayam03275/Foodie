@@ -4,6 +4,7 @@ import { connectDB } from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
 import cartRoutes from './routes/cartRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 import 'dotenv/config';
 // app config
@@ -22,6 +23,7 @@ connectDB();
 app.use("/api/food",foodRouter);
 app.use('/api/cart', cartRoutes);
 app.use('/api/order', orderRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 app.get('/',(req,res)=>{
     res.send("api working");
