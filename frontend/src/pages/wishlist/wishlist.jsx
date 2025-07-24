@@ -20,7 +20,15 @@ const Wishlist = () => {
       ) : (
         <div className="food-display-list">
           {wishlistedItems.map(item => (
-            <FoodItem key={item._id} {...item} />
+            <FoodItem
+  key={item._id}
+  id={item._id}   // Pass id explicitly
+  name={item.name}
+  description={item.description}
+  price={item.price}
+  image={item.image}
+/>
+
           ))}
         </div>
       )}
