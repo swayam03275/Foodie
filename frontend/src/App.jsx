@@ -9,12 +9,13 @@ import AppDownload from "./components/AppDownlad/AppDownload";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import ThemeContextProvider from "./components/context/ThemeContext";
 import FoodDetail from "./components/FoodDetail/FoodDetail";
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   return (
     <ThemeContextProvider>
       <>
+        <Toaster position="top-right" reverseOrder={false} />
         {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
         <div className="app">
           <Navbar setShowLogin={setShowLogin} />
