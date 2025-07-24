@@ -9,6 +9,7 @@ import AppDownload from "./components/AppDownlad/AppDownload";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import ThemeContextProvider from "./components/context/ThemeContext";
 import FoodDetail from "./components/FoodDetail/FoodDetail";
+
 import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
 import ScrollToTop from './components/ScrollToTop';
 import Wishlist from './pages/wishlist/wishlist';
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <ThemeContextProvider>
       <>
+        <Toaster position="top-right" reverseOrder={false} />
         {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
         <ScrollToTop />
         <div className="app">
