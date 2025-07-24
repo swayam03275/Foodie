@@ -10,23 +10,25 @@ body{
    z-index: 1000;          
    background-color: var(--bg-color); 
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   padding: 20px 0px;
+   padding: 20px 120px;
    display: flex;
    justify-content: space-between;
    align-items: center;
+  
 }
 .navbar-menu{
     display: flex;
     list-style: none;
     gap: 20px;
     color: #49557e;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .navbar-right{
     display: flex;
     align-items: center;
     gap: 40px;
+  
 }
 
 .navbar button{
@@ -34,7 +36,7 @@ body{
     font-size: 16px;
     color: 49557e;
     border: 1px solid tomato;
-    padding: 10px 30px;
+    padding: 6px 20px;
     border-radius: 50px;
     cursor: pointer;
     transition: 0.6s;
@@ -56,6 +58,7 @@ body{
 .navbar-search-icon{
     position: relative;
 }
+
 
 .navbar-search-icon .dot{
     position: absolute;
