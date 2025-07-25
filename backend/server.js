@@ -22,6 +22,7 @@ await connectDB();
 
 // api endpoints
 app.use("/api/food",foodRouter);
+app.use("/images", express.static('uploads')); // Serve images from the 'uploads' directory
 app.use("/api/auth", authRouter);
 
 app.get('/',(req,res)=>{
