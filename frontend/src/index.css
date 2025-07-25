@@ -35,3 +35,15 @@ a{
 h1, h2, h3, h4, h5, h6, p, a, span, li {
   color: var(--text-color);
 }
+/*darkmode support*/
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --title-color: #111111;
+}
+
+[data-theme='dark'] {
+  --bg-color: #1a1a1a;
+  --text-color: #eeeeee;
+  --title-color: #ffffff;
+}

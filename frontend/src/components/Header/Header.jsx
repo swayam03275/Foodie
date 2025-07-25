@@ -1,15 +1,23 @@
-import React from 'react'
-import './Header.css'
+import React from "react";
+import "./Header.css";
+import { Link } from "lucide-react";
 const Header = () => {
   return (
-    <div className='header'>
-      <div className='header-contents'>
+    <div className="header">
+      <div className="header-contents">
         <h2>Order Your Favourite Food Here</h2>
-        <p>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time</p>
-        <button>View Menu</button>
+        <p>
+          Craving something irresistible? Discover a world of flavors with
+          dishes made fresh, fast, and flawlessly. From comfort food to gourmet
+          delights, we serve joy on every plate—because you deserve every bite
+          of indulgence.
+        </p>
+         <a
+          href="#explore-menu">
+        <button>View Menu</button></a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
