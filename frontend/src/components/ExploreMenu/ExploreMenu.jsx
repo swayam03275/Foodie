@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/frontend_assets/assets";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ExploreMenu = ({ category, setCategory }) => {
   const scrollRef = useRef(null);
@@ -145,11 +146,11 @@ const ExploreMenu = ({ category, setCategory }) => {
 
   return (
     <div className="explore-menu" id="explore-menu">
-      <h1 style={{ color: 'var(--text-color)' }}>Explore Our Menu</h1>
+      <h1>Explore Our Menu</h1>
       <p className="explore-menu-text">
-        Choose from a diverse menu featuring a delectable array of dishes. Our
-        mission is to satisfy your cravings and elevate your dining experience,
-        one delicious meal at a time
+        Choose from a diverse menu featuring a delectable array of dishes crafted with passion. 
+        Our mission is to satisfy your cravings and elevate your dining experience, 
+        one delicious meal at a time.
       </p>
 
       <div 
