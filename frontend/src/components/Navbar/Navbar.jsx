@@ -4,19 +4,19 @@ import { assets } from "../../assets/frontend_assets/assets";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 import { ThemeContext } from "../context/ThemeContext";
-import { 
-  Home, 
-  Menu, 
-  Smartphone, 
-  Heart, 
-  Phone, 
-  Search, 
-  ShoppingCart, 
+import {
+  Home,
+  Menu,
+  Smartphone,
+  Heart,
+  Phone,
+  Search,
+  ShoppingCart,
   User,
   Sun,
   Moon,
   X,
-  AlignJustify
+  AlignJustify,
 } from "lucide-react";
 
 const Navbar = ({ setShowLogin }) => {
@@ -85,16 +85,14 @@ const Navbar = ({ setShowLogin }) => {
         <button className="theme-toggle" onClick={toggleTheme}>
           {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        
-        
-        
+
         <div className="navbar-cart">
           <Link to="/cart" className="icon-button">
             <ShoppingCart size={18} />
             <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
           </Link>
         </div>
-        
+
         <button className="signin-button" onClick={() => setShowLogin(true)}>
           <User size={16} />
           <span>Sign In</span>
@@ -104,4 +102,4 @@ const Navbar = ({ setShowLogin }) => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

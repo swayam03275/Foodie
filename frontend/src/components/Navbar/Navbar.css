@@ -4,12 +4,12 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.218); /* translucent backdrop */
+  background: rgba(255, 255, 255, 0.218); 
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  padding: 15px 80px; /* Back to normal padding */
+  padding: 15px 80px; 
   display: flex;
   justify-content:space-evenly;
   align-items: center;
@@ -18,7 +18,7 @@
   padding-right:10px;
 }
 
-/* Logo positioned at far left */
+
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -29,42 +29,41 @@
   transform: scale(1.02);
 }
 
-/* Menu centered but compact */
+
 .navbar-menu {
   display: flex;
   list-style: none;
-  gap: 1rem; /* Normal gap between menu items */
+  gap: 1rem; 
   margin-left:20px;
   margin-right:20px;
   padding: 0;
-  flex: 1; /* Take up available space */
-  justify-content: center; /* Center the menu items */
+  flex: 1; 
+  justify-content: center; 
 }
 
-/* Right section with normal spacing */
+
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 12px; /* Normal gap between action buttons */
+  gap: 12px; 
   flex: 0 0 auto;
 }
 
-/* Rest of your existing styles remain the same */
-/* Add more spacing for nav items */
+
 .nav-item {
   display: flex;
   align-items: center;
   gap: 20px;
   color: var(--text-color);
   text-decoration: none;
-  padding: 10px 20px; /* Increased padding for better spacing */
+  padding: 10px 20px; 
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap; 
 }
 
 .nav-item:hover {
@@ -182,7 +181,7 @@
   height: 35px;
 }
 
-/* Hamburger toggle icon */
+
 .hamburger {
   display: none;
   cursor: pointer;
@@ -196,7 +195,6 @@
   background-color: var(--hover-bg);
 }
 
-/* Mobile menu styles - Updated positioning */
 .navbar-menu.open {
   display: flex !important;
   position: absolute;
@@ -211,14 +209,14 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   border-bottom: 1px solid var(--border-color);
-  transform: none; /* Remove the center transform for mobile */
-  max-width: none; /* Remove max-width for mobile */
+  transform: none; 
+  max-width: none; 
 }
 
-/* Responsive Design - Updated with better spacing */
+
 @media (max-width: 1200px) {
   .navbar {
-    padding: 15px 30px; /* Less padding for smaller screens */
+    padding: 15px 30px; 
   }
 }
 

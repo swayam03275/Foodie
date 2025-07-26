@@ -312,33 +312,33 @@
   }
 
   .hero-stats {
-    gap: 1rem; /* Keep them side by side with smaller gap */
+    gap: 1rem; 
     padding: 0.8rem 0;
   }
 
   .stat-item {
-    gap: 0.2rem; /* Smaller gap between icon, number, and label */
+    gap: 0.2rem; 
   }
 
   .stat-icon {
-    width: 24px; /* Smaller icon container */
+    width: 24px; 
     height: 24px;
     border-radius: 12px;
   }
 
   .stat-number {
-    font-size: 1rem; /* Smaller number text */
+    font-size: 1rem; 
     font-weight: 700;
   }
 
   .stat-label {
-    font-size: 0.65rem; /* Smaller label text */
+    font-size: 0.65rem; 
     line-height: 1.2;
   }
 
   .stat-divider {
     width: 1px;
-    height: 25px; /* Shorter divider */
+    height: 25px; 
   }
 
   .hero-main {
