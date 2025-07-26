@@ -26,6 +26,7 @@ export const placeOrder = async (req, res) => {
 
     res.status(201).json(await order.populate("items.foodId items.restaurantId"));
   } catch (error) {
+    console.error("Order Placement Error:", error);
     res.status(500).json({ message: "Error placing order", error });
   }
 };

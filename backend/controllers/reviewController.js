@@ -3,21 +3,25 @@ import Food from "../models/foodModel.js";
 
 export const createReview = async (req, res) => {
   try {
-    const { foodId } = req.params;
-    const { rating, comment } = req.body;
+    const { foodId, rating, comment } = req.body;
     const userId = req.user._id;
 
     // Check if user already reviewed
-    const alreadyReviewed = await Review.findOne({ food: foodId, user: userId });
+    const alreadyReviewed = await Review.findOne({
+      food: foodId,
+      user: userId,
+    });
     if (alreadyReviewed) {
-      return res.status(400).json({ message: "You already reviewed this food item." });
+      return res
+        .status(400)
+        .json({ message: "You already reviewed this food item." });
     }
 
     // Create review
     const review = await Review.create({
       user: userId,
       food: foodId,
-      rating,
+      rating: Number(rating),
       comment,
     });
 
@@ -78,13 +82,16 @@ export const deleteReview = async (req, res) => {
     if (!review) return res.status(404).json({ message: "Review not found" });
 
     // Only the user who posted or an admin can delete
-    if (review.user.toString() !== req.user._id.toString() && req.user.role !== "admin") {
+    if (
+      review.user.toString() !== req.user._id.toString() &&
+      req.user.role !== "admin"
+    ) {
       return res.status(403).json({ message: "Not authorized" });
     }
 
     const foodId = review.food;
 
-    await review.remove();
+    await Review.findByIdAndDelete(reviewId);
 
     // Recalculate ratings
     const reviews = await Review.find({ food: foodId });
@@ -102,11 +109,13 @@ export const deleteReview = async (req, res) => {
   }
 };
 
-
 export const getReviewsByFood = async (req, res) => {
   try {
     const { foodId } = req.params;
-    const reviews = await Review.find({ food: foodId }).populate("user", "name");
+    const reviews = await Review.find({ food: foodId }).populate(
+      "user",
+      "name"
+    );
     res.json(reviews);
   } catch (error) {
     res.status(500).json({ message: error.message });

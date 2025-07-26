@@ -5,5 +5,4 @@ const restaurantSchema = new mongoose.Schema({
   address: String,
   phone: String,
 });
-
 export default mongoose.model("Restaurant", restaurantSchema);
