@@ -1,29 +1,27 @@
-body {
-  padding-top: 90px;
-}
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: var(--bg-color); 
- 
-  -webkit-backdrop-filter: blur(10px); /* for Safari */
-   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  padding: 15px 80px;
+  background: rgba(255, 255, 255, 0.218); /* translucent backdrop */
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 15px 80px; /* Back to normal padding */
   display: flex;
-  justify-content: space-between;
+  justify-content:space-evenly;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
+  padding-left:10px;
+  padding-right:10px;
 }
 
+/* Logo positioned at far left */
 .navbar-logo {
   display: flex;
   align-items: center;
-  text-decoration: none;
   transition: transform 0.2s ease;
 }
 
@@ -31,27 +29,42 @@ body {
   transform: scale(1.02);
 }
 
+/* Menu centered but compact */
 .navbar-menu {
   display: flex;
   list-style: none;
-  gap: 1rem;
-  margin: 5px;
+  gap: 1rem; /* Normal gap between menu items */
+  margin-left:20px;
+  margin-right:20px;
   padding: 0;
+  flex: 1; /* Take up available space */
+  justify-content: center; /* Center the menu items */
 }
 
+/* Right section with normal spacing */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Normal gap between action buttons */
+  flex: 0 0 auto;
+}
+
+/* Rest of your existing styles remain the same */
+/* Add more spacing for nav items */
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
   color: var(--text-color);
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 10px 20px; /* Increased padding for better spacing */
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .nav-item:hover {
@@ -74,12 +87,6 @@ body {
   height: 2px;
   background-color: var(--accent-color);
   border-radius: 1px;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 .icon-button {
@@ -189,7 +196,7 @@ body {
   background-color: var(--hover-bg);
 }
 
-/* Mobile menu styles */
+/* Mobile menu styles - Updated positioning */
 .navbar-menu.open {
   display: flex !important;
   position: absolute;
@@ -204,34 +211,33 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   border-bottom: 1px solid var(--border-color);
+  transform: none; /* Remove the center transform for mobile */
+  max-width: none; /* Remove max-width for mobile */
 }
 
-/* Responsive Design */
+/* Responsive Design - Updated with better spacing */
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 15px 30px; /* Less padding for smaller screens */
+  }
+}
+
 @media (max-width: 1050px) {
   .navbar {
-    padding: 15px 60px;
+    padding: 15px 20px;
   }
   .logo {
     height: 30px;
-  }
-  .navbar-menu {
-    gap: 25px;
-  }
-  .navbar-right {
-    gap: 10px;
   }
 }
 
 @media (max-width: 900px) {
   .navbar {
-    padding: 15px 40px;
-  }
-  .navbar-menu {
-    gap: 20px;
+    padding: 15px 15px;
   }
   .nav-item {
     font-size: 13px;
-    padding: 6px 12px;
+    padding: 8px 16px;
   }
 }
 
@@ -288,7 +294,9 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 90px;
 }
+
 .desktop-only {
   display: flex;
 }
