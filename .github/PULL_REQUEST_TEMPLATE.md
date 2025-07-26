@@ -1,10 +1,9 @@
 ## 📌 Pull Request Summary
 
-<!-- 
-A short description of the changes you're making.
+`A short description of the changes you're making.
 Example: 
-Fixed a bug where the food items can be deleted.
--->
+Fixed a bug where the food items can be deleted.`
+
 
 ## 🛠️ Type of Change
 
