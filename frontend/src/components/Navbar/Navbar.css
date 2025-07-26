@@ -22,7 +22,7 @@
 .navbar-logo {
   display: flex;
   align-items: center;
-  transition: transform 0.2s ease;
+  margin-left: 24px;
 }
 
 .navbar-logo:hover {
@@ -170,11 +170,11 @@
 }
 
 .app-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 12px;
+  height: 60px;        /* increase size */
+  width: auto;         /* let it scale naturally */
+  object-fit: contain; /* prevent cropping */
+  border-radius: 8px;
+
 }
 
 .logo {
