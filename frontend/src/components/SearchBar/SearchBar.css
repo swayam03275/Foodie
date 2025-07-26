@@ -2,6 +2,7 @@
 .search-bar-container {
   position: relative;
   width: 100%;
+  padding-top: 75px;
   max-width: 600px;
   margin: 0 auto;
 }
