@@ -8,5 +8,4 @@ const userSchema = new mongoose.Schema({
   favoriteRestaurant: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant' }
 }, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
-export default User;
+export default mongoose.model('User', userSchema);
