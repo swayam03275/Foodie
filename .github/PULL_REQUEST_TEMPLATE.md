@@ -7,7 +7,7 @@ Fixed a bug where the food items can be deleted.`
 
 ## 🛠️ Type of Change
 
-Please delete options that are not relevant.
+Please select options that are relevant to your pull request
 
 - [ ] 🐛 Bug fix  
 - [ ] ✨ New feature  
