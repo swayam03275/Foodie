@@ -6,6 +6,7 @@ import cartRoutes from './routes/cartRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import authRouter from './routes/authRoute.js';
 import 'dotenv/config';
+
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -25,6 +26,7 @@ await connectDB();
 app.use("/api/food",foodRouter);
 app.use('/api/cart', cartRoutes);
 app.use('/api/order', orderRoutes);
+app.use("/images", express.static('uploads')); // Serve images from the 'uploads' directory
 app.use("/api/auth", authRouter);
 
 app.get('/',(req,res)=>{
