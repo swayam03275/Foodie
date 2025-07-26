@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
-import { assets } from "../../assets/frontend_assets/assets";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
+import { assets } from "../../assets/frontend_assets/assets";
 import { ThemeContext } from "../context/ThemeContext";
 import {
   Home,
@@ -32,8 +32,7 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <div className={`navbar ${theme === "dark" ? "navbar-dark" : ""}`}>
       <Link to="/" className="navbar-logo">
-        <img src={assets.appicon} alt="app icon" className="app-icon" />
-        <img src={assets.logo} alt="logo" className="logo" />
+        <img src={assets.foodie_icon} alt="app icon" className="app-icon" />
       </Link>
 
       {/* Hamburger Icon */}
