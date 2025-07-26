@@ -3,8 +3,6 @@ import cors from 'cors'
 import { connectDB } from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
 import authRouter from './routes/authRoute.js';
-import paymentRoute from "./routes/paymentRoute.js";
-
 import 'dotenv/config';
 
 import dotenv from 'dotenv';
@@ -26,7 +24,6 @@ await connectDB();
 app.use("/api/food",foodRouter);
 app.use("/images", express.static('uploads')); // Serve images from the 'uploads' directory
 app.use("/api/auth", authRouter);
-app.use("/api/payment", paymentRoute);
 
 app.get('/',(req,res)=>{
     res.send("api working");
