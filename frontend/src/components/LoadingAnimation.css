@@ -1,231 +1,1634 @@
-.loading-animation-container {
-  position: relative;
+/* 
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6347 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
   overflow: hidden;
-  flex-direction: column;
 }
 
-.city-skyline {
+.loading-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.road {
   position: absolute;
-  top: 10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+  border-top: 4px solid #FFD700;
+}
+.road::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0px,
+    transparent 20px,
+    #FFD700 20px,
+    #FFD700 40px
+  );
+  animation: roadLines 1s linear infinite;
+}
+
+
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.8;
+}
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+}
+.cloud-1 {
+  width: 80px;
+  height: 40px;
+  top: 20%;
+  left: 10%;
+  animation: cloudFloat 20s linear infinite;
+}
+.cloud-1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 10px;
+}
+.cloud-1::after {
+  width: 60px;
+  height: 40px;
+  top: -15px;
+  right: 10px;
+}
+.cloud-2 {
+  width: 60px;
+  height: 30px;
+  top: 15%;
+  left: 70%;
+  animation: cloudFloat 25s linear infinite;
+}
+.cloud-2::before {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 8px;
+}
+.cloud-2::after {
+  width: 50px;
+  height: 30px;
+  top: -10px;
+  right: 8px;
+}
+.cloud-3 {
+  width: 100px;
+  height: 50px;
+  top: 25%;
+  left: 40%;
+  animation: cloudFloat 30s linear infinite;
+}
+.cloud-3::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 15px;
+}
+.cloud-3::after {
+  width: 70px;
+  height: 50px;
+  top: -20px;
+  right: 15px;
+}
+
+
+.scooter-container {
+  position: absolute;
+  bottom: 120px;
+  left: -200px;
+  animation: scooterMove 3s ease-in-out infinite;
+}
+
+.scooter {
+  position: relative;
+  width: 120px;
+  height: 80px;
+}
+
+
+.delivery-person {
+  position: absolute;
+  top: -50px;
+  left: 25px;
+  z-index: 2;
+  animation: bodyBounce 0.6s ease-in-out infinite;
+}
+
+.helmet {
+  width: 25px;
+  height: 25px;
+  background: #DC143C;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: relative;
+  margin-bottom: 2px;
+}
+.helmet::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  top: 8px;
+  left: 5px;
+}
+
+.body {
+  width: 20px;
+  height: 30px;
+  background: #FFD700;
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.arms {
+  position: absolute;
+  top: 25px;
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
-  height: 40px;
-  z-index: 0;
-  pointer-events: none;
 }
 
-.loading-progress-bg {
+.arm {
+  width: 3px;
+  height: 20px;
+  background: #fdbcb4;
+  position: absolute;
+}
+
+
+.arm-left {
+  left: -12px;
+  transform-origin: top;
+  animation: armDrive 1s ease-in-out infinite;
+}
+.arm-right {
+  right: -12px;
+  transform-origin: top;
+  animation: armDriveRight 1s ease-in-out infinite;
+}
+
+
+.legs {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.leg {
+  width: 4px;
+  height: 20px;
+  background: #DC143C;
+  position: absolute;
+}
+
+.leg-left {
+  left: -8px;
+  transform-origin: top;
+  animation: legDriveLeft 0.6s ease-in-out infinite;
+}
+.leg-right {
+  right: -8px;
+  transform-origin: top;
+  animation: legDriveRight 0.6s ease-in-out infinite;
+}
+
+
+.scooter-body {
+  position: relative;
+  z-index: 1;
+}
+
+.handlebar {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  animation: handlebarDrive 1s ease-in-out infinite; 
+}
+.handlebar::before {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -8px;
+  width: 3px;
+  height: 20px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.main-body {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 70px;
+  height: 25px;
+  background: #DC143C;
+  border-radius: 15px;
+}
+
+.seat {
+  position: absolute;
+  top: 15px;
+  left: 35px;
+  width: 20px;
+  height: 8px;
+  background: #333;
+  border-radius: 10px;
+}
+
+.delivery-box {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: #FFD700;
+  border-radius: 3px;
+  border: 2px solid #FFA500;
+}
+.delivery-box::after {
+  content: '🍕';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  font-size: 8px;
 }
 
-.progress-circle {
-  width: 200px;
-  height: 200px;
-  animation: rotateCircle 4s linear infinite;
+
+.wheels {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
-@keyframes rotateCircle {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.wheel {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #333;
+  border-radius: 50%;
+  bottom: 0;
+  animation: wheelSpin 0.2s linear infinite;
+}
+.wheel-front {
+  right: 10px;
+}
+.wheel-back {
+  left: 10px;
+}
+.wheel-inner {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background: #666;
+  border-radius: 50%;
+}
+.spokes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+}
+.spoke {
+  position: absolute;
+  width: 1px;
+  height: 15px;
+  background: #999;
+  left: 50%;
+  top: 0;
+  transform-origin: bottom;
+}
+.spoke:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+.spoke:nth-child(2) { transform: translateX(-50%) rotate(45deg); }
+.spoke:nth-child(3) { transform: translateX(-50%) rotate(90deg); }
+.spoke:nth-child(4) { transform: translateX(-50%) rotate(135deg); }
+
+
+.speed-lines {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.8);
+  border-radius: 1px;
+  animation: speedLines 0.1s linear infinite;
+}
+.speed-line-1 {
+  width: 20px;
+  top: -10px;
+  animation-delay: 0s;
+}
+.speed-line-2 {
+  width: 30px;
+  top: 0px;
+  animation-delay: 0.05s;
+}
+.speed-line-3 {
+  width: 25px;
+  top: 10px;
+  animation-delay: 0.1s;
 }
 
-.progress-bar {
-  stroke-dasharray: 282.6;
-  stroke-dashoffset: 0;
-  animation: progressBarAnim 4s linear infinite;
-  filter: url(#glow);
+
+.app-name {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #DC143C;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.app-name h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: #DC143C;
+  letter-spacing: 0.1em;
+}
+.app-name p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #8B4513;
+  font-style: italic;
 }
 
-@keyframes progressBarAnim {
-  0% { stroke-dashoffset: 282.6; }
-  100% { stroke-dashoffset: 0; }
+.loading-text {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #DC143C;
+}
+.loading-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #8B4513;
+}
+.loading-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: #DC143C;
+  border-radius: 50%;
+  animation: loadingDots 1.4s ease-in-out infinite both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+
+@keyframes scooterMove {
+  0% {
+    left: -200px;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    left: calc(100vw + 50px);
+    transform: scale(0.8);
+  }
+}
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes speedLines {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+@keyframes cloudFloat {
+  from { transform: translateX(-100px); }
+  to { transform: translateX(calc(100vw + 100px)); }
+}
+@keyframes roadLines {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
+}
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.city-map {
+
+@keyframes armDrive {
+  0%, 100% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-35deg);
+  }
+}
+@keyframes armDriveRight {
+  0%, 100% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(35deg);
+  }
+}
+@keyframes legDriveLeft {
+  0%, 100% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(55deg);
+  }
+}
+@keyframes legDriveRight {
+  0%, 100% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-55deg);
+  }
+}
+@keyframes bodyBounce {
+  0%, 100% { top: -50px; }
+  50% { top: -52px; }
+}
+
+@keyframes handlebarDrive {
+  0%, 100% { transform: rotate(0deg);}
+  50% { transform: rotate(3deg);}
+}
+
+
+@media (max-width: 768px) {
+  .scooter-container {
+    bottom: 100px;
+  }
+  .loading-text {
+    bottom: 150px;
+  }
+  .loading-text h2 {
+    font-size: 1.2rem;
+  }
+  .cloud-1, .cloud-2, .cloud-3 {
+    transform: scale(0.7);
+  }
+} */
+
+
+/* 
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+.loading-content {
   position: relative;
-  width: 220px;
-  height: 120px;
-  z-index: 2;
-}
-
-.city-path {
-  position: absolute;
-  left: 0;
-  top: 90px;
-  width: 220px;
-  height: 40px;
-  z-index: 2;
-  animation: dashmove 4s linear infinite;
-}
-
-@keyframes dashmove {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 36; }
-}
-
-.scooter-wrapper {
-  position: absolute;
-  left: 0;
-  top: 60px;
-  width: 80px;
-  height: 40px;
-  animation: scooterMove 4s cubic-bezier(0.77, 0, 0.175, 1) infinite;
-  z-index: 3;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-@keyframes scooterMove {
-  0% { left: 0; }
-  10% { top: 60px; }
-  20% { top: 55px; }
-  30% { top: 65px; }
-  40% { top: 60px; }
-  90% { left: 140px; }
-  100% { left: 0; }
-}
-
-.scooter-shadow {
-  width: 60px;
-  height: 10px;
-  background: radial-gradient(ellipse at center, #ffb30055 0%, #fff3e000 80%);
-  border-radius: 50%;
+.road {
   position: absolute;
-  left: 10px;
-  top: 38px;
-  z-index: 2;
-  filter: blur(1px);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+  border-top: 4px solid #FFD700;
+}
+.road::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0px,
+    transparent 20px,
+    #FFD700 20px,
+    #FFD700 40px
+  );
+  animation: roadLines 1s linear infinite;
 }
 
-.scooter {
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.8;
+}
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+}
+.cloud-1 {
   width: 80px;
   height: 40px;
-  display: block;
-  z-index: 3;
+  top: 20%;
+  left: 10%;
+  animation: cloudFloat 20s linear infinite;
 }
+.cloud-1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 10px;
+}
+.cloud-1::after {
+  width: 60px;
+  height: 40px;
+  top: -15px;
+  right: 10px;
+}
+.cloud-2 {
+  width: 60px;
+  height: 30px;
+  top: 15%;
+  left: 70%;
+  animation: cloudFloat 25s linear infinite;
+}
+.cloud-2::before {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 8px;
+}
+.cloud-2::after {
+  width: 50px;
+  height: 30px;
+  top: -10px;
+  right: 8px;
+}
+.cloud-3 {
+  width: 100px;
+  height: 50px;
+  top: 25%;
+  left: 40%;
+  animation: cloudFloat 30s linear infinite;
+}
+.cloud-3::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 15px;
+}
+.cloud-3::after {
+  width: 70px;
+  height: 50px;
+  top: -20px;
+  right: 15px;
+}
+
+.scooter-container {
+  position: absolute;
+  bottom: 120px;
+  left: -200px;
+  animation: scooterMove 3s ease-in-out infinite;
+}
+.scooter {
+  position: relative;
+  width: 120px;
+  height: 80px;
+}
+
 
 .delivery-person {
   position: absolute;
-  left: 50px;
-  top: 0;
+  top: -50px;
+  left: 25px;
+  z-index: 2;
+  animation: bodyBounce 0.6s ease-in-out infinite;
 }
 
-.person-svg {
-  width: 20px;
-  height: 20px;
+.helmet {
+  width: 26px;
+  height: 26px;
+  background: #192bff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: relative;
+  margin-bottom: 0px;
 }
-
-.food-icon {
+.helmet::after {
+  content: '';
   position: absolute;
-  width: 32px;
+  width: 14px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  top: 8px;
+  left: 7px;
+}
+
+.face {
+  width: 18px;
+  height: 18px;
+  background: #fdd7b0;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+}
+.eye {
+  width: 2px;
+  height: 2px;
+  background: #222;
+  border-radius: 50%;
+  position: absolute;
+  top: 7px;
+}
+.eye-left { left: 5px; }
+.eye-right { right: 5px; }
+.smile {
+  width: 6px;
+  height: 3px;
+  border-bottom: 2px solid #b58135;
+  border-radius: 0 0 6px 6px;
+  position: absolute;
+  bottom: 2px;
+  left: 6px;
+}
+
+.body {
+  width: 22px;
   height: 32px;
-  opacity: 0;
-  animation: foodPop 4s infinite;
+  background: #26d15f;
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+  border-bottom: 5px solid #fff;
+}
+.backpack {
+  width: 14px;
+  height: 15px;
+  background: #ffd700;
+  border-radius: 4px;
+  position: absolute;
+  left: -14px;
+  top: 12px;
+  border: 2px solid #FFA500;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
 }
 
-.food-burger {
-  left: 30px;
+.arms {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.arm {
+  width: 3px;
+  height: 20px;
+  background: #fdbcb4;
+  position: absolute;
+  border-radius: 2px;
+}
+.arm-left {
+  left: -12px;
+  transform-origin: top;
+  animation: armDrive 1s ease-in-out infinite;
+}
+.arm-right {
+  right: -12px;
+  transform-origin: top;
+  animation: armDriveRight 1s ease-in-out infinite;
+}
+
+.legs {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.leg {
+  width: 4px;
+  height: 20px;
+  background: #262626;
+  position: absolute;
+  border-radius:2px;
+}
+.leg-left {
+  left: -8px;
+  transform-origin: top;
+  animation: legDriveLeft 0.6s ease-in-out infinite;
+}
+.leg-right {
+  right: -8px;
+  transform-origin: top;
+  animation: legDriveRight 0.6s ease-in-out infinite;
+}
+
+
+.scooter-body {
+  position: relative;
+  z-index: 1;
+}
+.handlebar {
+  position: absolute;
   top: 10px;
-  animation-delay: 0.5s;
-}
-
-.food-pizza {
-  left: 100px;
-  top: 0px;
-  animation-delay: 1.2s;
-}
-
-.food-biryani {
-  left: 170px;
-  top: 20px;
-  animation-delay: 2s;
-}
-
-.food-drink {
   left: 80px;
-  top: 70px;
-  animation-delay: 2.7s;
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  animation: handlebarDrive 1s ease-in-out infinite;
+}
+.handlebar::before {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -8px;
+  width: 3px;
+  height: 20px;
+  background: #333;
+  border-radius: 2px;
+}
+.main-body {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 70px;
+  height: 25px;
+  background: #DC143C;
+  border-radius: 15px;
+}
+.seat {
+  position: absolute;
+  top: 15px;
+  left: 35px;
+  width: 20px;
+  height: 8px;
+  background: #333;
+  border-radius: 10px;
+}
+.delivery-box {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: #FFD700;
+  border-radius: 3px;
+  border: 2px solid #FFA500;
+}
+.delivery-box::after {
+  content: '🍕';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
 }
 
-@keyframes foodPop {
-  0%, 100% { opacity: 0; transform: scale(0.7) translateY(10px) rotate(-10deg); }
-  10% { opacity: 1; transform: scale(1.1) translateY(-10px) rotate(8deg); }
-  20% { opacity: 1; transform: scale(1) translateY(0) rotate(-5deg); }
-  25% { opacity: 1; transform: scale(1.05) translateY(-5px) rotate(5deg); }
-  30% { opacity: 0; transform: scale(0.7) translateY(10px) rotate(-10deg); }
-  100% { opacity: 0; }
+.wheels {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.wheel {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #333;
+  border-radius: 50%;
+  bottom: 0;
+  animation: wheelSpin 0.2s linear infinite;
+}
+.wheel-front {
+  right: 10px;
+}
+.wheel-back {
+  left: 10px;
+}
+.wheel-inner {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background: #666;
+  border-radius: 50%;
+}
+.spokes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+}
+.spoke {
+  position: absolute;
+  width: 1px;
+  height: 15px;
+  background: #999;
+  left: 50%;
+  top: 0;
+  transform-origin: bottom;
+}
+.spoke:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+.spoke:nth-child(2) { transform: translateX(-50%) rotate(45deg); }
+.spoke:nth-child(3) { transform: translateX(-50%) rotate(90deg); }
+.spoke:nth-child(4) { transform: translateX(-50%) rotate(135deg); }
+
+.speed-lines {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.8);
+  border-radius: 1px;
+  animation: speedLines 0.1s linear infinite;
+}
+.speed-line-1 {
+  width: 20px;
+  top: -10px;
+  animation-delay: 0s;
+}
+.speed-line-2 {
+  width: 30px;
+  top: 0px;
+  animation-delay: 0.05s;
+}
+.speed-line-3 {
+  width: 25px;
+  top: 10px;
+  animation-delay: 0.1s;
 }
 
-.loading-message {
-  margin-top: 30px;
-  font-size: 1.2rem;
-  color: #ff7043;
-  font-weight: 600;
-  letter-spacing: 1px;
+.app-name {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  text-shadow: 0 2px 8px #fff3e0;
-  z-index: 10;
+  color: #DC143C;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.app-name h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: #DC143C;
+  letter-spacing: 0.1em;
+}
+.app-name p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #8B4513;
+  font-style: italic;
 }
 
-@media (max-width: 600px) {
-  .loading-progress-bg {
-    width: 120px;
-    height: 120px;
+.loading-text {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #DC143C;
+}
+.loading-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #8B4513;
+}
+.loading-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: #DC143C;
+  border-radius: 50%;
+  animation: loadingDots 1.4s ease-in-out infinite both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+
+@keyframes scooterMove {
+  0% {
+    left: -200px;
+    transform: scale(0.8);
   }
-  .progress-circle {
-    width: 120px;
-    height: 120px;
+  50% {
+    transform: scale(1);
   }
-  .city-map {
-    width: 140px;
-    height: 80px;
+  100% {
+    left: calc(100vw + 50px);
+    transform: scale(0.8);
   }
-  .city-skyline {
-    width: 140px;
-    height: 30px;
+}
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes speedLines {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
   }
-  .city-path {
-    width: 140px;
-    height: 30px;
-    top: 60px;
+  50% {
+    opacity: 1;
   }
-  .scooter-wrapper {
-    width: 50px;
-    height: 25px;
-    animation: scooterMoveMobile 4s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  100% {
+    opacity: 0;
+    transform: translateX(-30px);
   }
-  @keyframes scooterMoveMobile {
-    0% { left: 0; }
-    10% { top: 60px; }
-    20% { top: 55px; }
-    30% { top: 65px; }
-    40% { top: 60px; }
-    90% { left: 90px; }
-    100% { left: 0; }
+}
+@keyframes cloudFloat {
+  from { transform: translateX(-100px); }
+  to { transform: translateX(calc(100vw + 100px)); }
+}
+@keyframes roadLines {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
+}
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
   }
-  .scooter-shadow {
-    width: 30px;
-    height: 5px;
-    left: 5px;
-    top: 18px;
+  40% {
+    transform: scale(1);
+    opacity: 1;
   }
-  .food-icon {
-    width: 20px;
-    height: 20px;
+}
+
+
+@keyframes armDrive {
+  0%, 100% { transform: rotate(-45deg); }
+  50% { transform: rotate(-35deg); }
+}
+@keyframes armDriveRight {
+  0%, 100% { transform: rotate(45deg); }
+  50% { transform: rotate(35deg); }
+}
+@keyframes legDriveLeft {
+  0%, 100% { transform: rotate(45deg); }
+  50% { transform: rotate(55deg); }
+}
+@keyframes legDriveRight {
+  0%, 100% { transform: rotate(-45deg); }
+  50% { transform: rotate(-55deg); }
+}
+@keyframes bodyBounce {
+  0%, 100% { top: -50px; }
+  50% { top: -52px; }
+}
+
+@keyframes handlebarDrive {
+  0%, 100% { transform: rotate(0deg);}
+  50% { transform: rotate(3deg);}
+}
+
+
+@media (max-width: 768px) {
+  .scooter-container {
+    bottom: 100px;
   }
-  .loading-message {
-    font-size: 1rem;
+  .loading-text {
+    bottom: 150px;
   }
-} 
+  .loading-text h2 {
+    font-size: 1.2rem;
+  }
+  .cloud-1, .cloud-2, .cloud-3 {
+    transform: scale(0.7);
+  }
+} */
+
+
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.loading-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Road */
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+  border-top: 4px solid #FFD700;
+}
+.road::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0px,
+    transparent 20px,
+    #FFD700 20px,
+    #FFD700 40px
+  );
+  animation: roadLines 1s linear infinite;
+}
+
+/* Clouds */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.8;
+}
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+}
+.cloud-1 {
+  width: 80px;
+  height: 40px;
+  top: 20%;
+  left: 10%;
+  animation: cloudFloat 20s linear infinite;
+}
+.cloud-1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 10px;
+}
+.cloud-1::after {
+  width: 60px;
+  height: 40px;
+  top: -15px;
+  right: 10px;
+}
+.cloud-2 {
+  width: 60px;
+  height: 30px;
+  top: 15%;
+  left: 70%;
+  animation: cloudFloat 25s linear infinite;
+}
+.cloud-2::before {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 8px;
+}
+.cloud-2::after {
+  width: 50px;
+  height: 30px;
+  top: -10px;
+  right: 8px;
+}
+.cloud-3 {
+  width: 100px;
+  height: 50px;
+  top: 25%;
+  left: 40%;
+  animation: cloudFloat 30s linear infinite;
+}
+.cloud-3::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 15px;
+}
+.cloud-3::after {
+  width: 70px;
+  height: 50px;
+  top: -20px;
+  right: 15px;
+}
+
+/* Scooter Container */
+.scooter-container {
+  position: absolute;
+  bottom: 120px;
+  left: -200px;
+  animation: scooterMove 3s ease-in-out infinite;
+}
+.scooter {
+  position: relative;
+  width: 120px;
+  height: 80px;
+}
+
+/* DELIVERY PERSON - SIDE VIEW */
+.delivery-person.side-view {
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  width: 40px;
+  height: 50px;
+  z-index: 2;
+  animation: bodyBounce 0.6s ease-in-out infinite;
+}
+
+/* Helmet side profile */
+.helmet-side {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 22px;
+  height: 22px;
+  background: #192bff;
+  border-radius: 50% 60% 60% 50% / 55% 60% 40% 40%;
+  box-shadow: inset 0 4px 8px rgba(255,255,255,0.3);
+  z-index: 3;
+}
+
+/* Face profile (nose/cheek) */
+.face-profile {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 8px;
+  height: 10px;
+  background: #fdd7b0;
+  border-radius: 60% 40% 50% 50% / 60% 60% 40% 40%;
+  z-index: 4;
+  box-shadow: 1px 0 1px rgba(0,0,0,0.1);
+}
+
+/* Body side */
+.body-side {
+  position: absolute;
+  left: 12px;
+  top: 25px;
+  width: 16px;
+  height: 20px;
+  background: #26d15f;
+  border-radius: 8px 12px 10px 16px / 10px 10px 16px 8px;
+  border-bottom: 5px solid #fff;
+  box-shadow: inset 0 3px 0 rgba(255,255,255,0.5);
+}
+
+/* Arm reaching forward */
+.side-arm {
+  position: absolute;
+  left: 22px;
+  top: 20px;
+  width: 18px;
+  height: 4px;
+  background: #fdbcb4;
+  border-radius: 2px 8px 8px 2px;
+  transform-origin: left center;
+  transform: rotate(20deg);
+  animation: armDriveSide 1s ease-in-out infinite;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+/* Leg overlapping scooter */
+.side-leg {
+  position: absolute;
+  left: 15px;
+  top: 42px;
+  width: 16px;
+  height: 5px;
+  background: #262626;
+  border-radius: 2px 8px 8px 2px;
+  transform-origin: left center;
+  transform: rotate(22deg);
+  animation: legDriveSide 0.6s ease-in-out infinite;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+
+/* Backpack behind rider */
+.side-backpack {
+  position: absolute;
+  left: -8px;
+  top: 26px;
+  width: 10px;
+  height: 14px;
+  background: #ffd700;
+  border-radius: 2px 8px 6px 4px;
+  border: 2px solid #ffa500;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+/* Scooter body */
+.scooter-body {
+  position: relative;
+  z-index: 1;
+}
+.handlebar {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  animation: handlebarDrive 1s ease-in-out infinite;
+}
+.handlebar::before {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -8px;
+  width: 3px;
+  height: 20px;
+  background: #333;
+  border-radius: 2px;
+}
+.main-body {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 70px;
+  height: 25px;
+  background: #DC143C;
+  border-radius: 15px;
+}
+.seat {
+  position: absolute;
+  top: 15px;
+  left: 35px;
+  width: 20px;
+  height: 8px;
+  background: #333;
+  border-radius: 10px;
+}
+.delivery-box {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: #FFD700;
+  border-radius: 3px;
+  border: 2px solid #FFA500;
+}
+.delivery-box::after {
+  content: '🍕';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+}
+
+/* Wheels */
+.wheels {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.wheel {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #333;
+  border-radius: 50%;
+  bottom: 0;
+  animation: wheelSpin 0.2s linear infinite;
+}
+.wheel-front {
+  right: 10px;
+}
+.wheel-back {
+  left: 10px;
+}
+.wheel-inner {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background: #666;
+  border-radius: 50%;
+}
+.spokes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+}
+.spoke {
+  position: absolute;
+  width: 1px;
+  height: 15px;
+  background: #999;
+  left: 50%;
+  top: 0;
+  transform-origin: bottom;
+}
+.spoke:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
+.spoke:nth-child(2) { transform: translateX(-50%) rotate(45deg); }
+.spoke:nth-child(3) { transform: translateX(-50%) rotate(90deg); }
+.spoke:nth-child(4) { transform: translateX(-50%) rotate(135deg); }
+
+/* Speed Lines */
+.speed-lines {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.8);
+  border-radius: 1px;
+  animation: speedLines 0.1s linear infinite;
+}
+.speed-line-1 {
+  width: 20px;
+  top: -10px;
+  animation-delay: 0s;
+}
+.speed-line-2 {
+  width: 30px;
+  top: 0px;
+  animation-delay: 0.05s;
+}
+.speed-line-3 {
+  width: 25px;
+  top: 10px;
+  animation-delay: 0.1s;
+}
+
+/* App Name */
+.app-name {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #DC143C;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.app-name h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  color: #DC143C;
+  letter-spacing: 0.1em;
+}
+.app-name p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #8B4513;
+  font-style: italic;
+}
+
+/* Loading Text */
+.loading-text {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #DC143C;
+}
+.loading-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #8B4513;
+}
+.loading-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: #DC143C;
+  border-radius: 50%;
+  animation: loadingDots 1.4s ease-in-out infinite both;
+}
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+/* Animations */
+@keyframes scooterMove {
+  0% {
+    left: -200px;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    left: calc(100vw + 50px);
+    transform: scale(0.8);
+  }
+}
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes speedLines {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+@keyframes cloudFloat {
+  from { transform: translateX(-100px); }
+  to { transform: translateX(calc(100vw + 100px)); }
+}
+@keyframes roadLines {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
+}
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Driving Animations for arm & leg side */
+@keyframes armDriveSide {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(10deg); }
+}
+@keyframes legDriveSide {
+  0%, 100% { transform: rotate(22deg); }
+  50% { transform: rotate(12deg); }
+}
+/* Body bounce to simulate scooter movement */
+@keyframes bodyBounce {
+  0%, 100% { top: -45px; }
+  50% { top: -47px; }
+}
+/* Handlebar animation */
+@keyframes handlebarDrive {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scooter-container {
+    bottom: 100px;
+  }
+  .loading-text {
+    bottom: 150px;
+  }
+  .loading-text h2 {
+    font-size: 1.2rem;
+  }
+  .cloud-1, .cloud-2, .cloud-3 {
+    transform: scale(0.7);
+  }
+}
