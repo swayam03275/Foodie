@@ -13,6 +13,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
 import Wishlist from "./pages/wishlist/wishlist";
+import Chatbot from "./components/Chatbot/Chatbot";
 import { Toaster } from "react-hot-toast";
 import LoadingAnimation from './components/LoadingAnimation';
 
@@ -50,6 +51,7 @@ const App = () => {
       <CartSummaryBar />
       <AppDownload />
       <Footer />
+      <Chatbot /> {/* AI Food Assistant */}
     </div>
   </>
 </ThemeContextProvider>

@@ -1,7 +1,7 @@
 .scroll-to-top-btn {
   position: fixed;
-  bottom: 80px; /* ⬅️ above the cart bar */
-  right: 20px;
+  bottom: 20px; /* ⬅️ bottom left corner */
+  left: 20px; /* ⬅️ changed from right to left */
   z-index: 999;
   background-color: #FC4B32;
   color: white;
