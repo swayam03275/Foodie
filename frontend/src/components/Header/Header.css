@@ -18,7 +18,7 @@
   overflow: hidden;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
   padding: 1.5rem;
-  border-radius: 32px;
+  /* border-radius: 32px; */
 }
 
 .hero-background {
