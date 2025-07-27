@@ -5,6 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom"; //  import useLocat
 import { food_list } from "../../assets/frontend_assets/assets";
 import { ShoppingCart, IndianRupee } from "lucide-react"; // Add Lucide icons
 
+const FREE_DELIVERY_THRESHOLD = 150; // You can adjust this value as needed
+
 const CartSummaryBar = () => {
   const { cartItems, getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -17,6 +19,8 @@ const CartSummaryBar = () => {
     0
   );
   const totalAmount = getTotalCartAmount();
+  const deliveryProgress = Math.min(totalAmount / FREE_DELIVERY_THRESHOLD, 1);
+  const amountLeft = Math.max(FREE_DELIVERY_THRESHOLD - totalAmount, 0);
 
   // Handle slide-in and slide-out animations
   useEffect(() => {
@@ -55,6 +59,27 @@ const CartSummaryBar = () => {
           <span className="cart-text">Total: ₹{totalAmount.toFixed(2)}</span>
         </div>
       </div>
+      {/* Free Delivery Progress Bar */}
+      <div className="free-delivery-progress-container">
+        <div className="free-delivery-progress-bar-bg">
+          <div
+            className="free-delivery-progress-bar-fill"
+            style={{ width: `${deliveryProgress * 100}%` }}
+          ></div>
+        </div>
+        <div className="free-delivery-progress-text">
+          {deliveryProgress < 1 ? (
+            <span>
+              Add <b>₹{amountLeft.toFixed(2)}</b> more for <b>Free Delivery</b>!
+            </span>
+          ) : (
+            <span>
+              🎉 <b>Congratulations!</b> You have unlocked <b>Free Delivery</b>!
+            </span>
+          )}
+        </div>
+      </div>
+      {/* View Cart Button */}
       <button className="view-cart-btn" onClick={() => navigate("/cart")}>
         VIEW CART
       </button>

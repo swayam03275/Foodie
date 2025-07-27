@@ -295,3 +295,53 @@
     min-width: auto;
   }
 }
+
+/* Free Delivery Progress Bar Styles */
+.free-delivery-progress-container {
+  flex: 1 1 100%;
+  max-width: 340px;
+  margin: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+}
+
+.free-delivery-progress-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.free-delivery-progress-bar-fill {
+  height: 100%;
+  /* background: linear-gradient(90deg, #ffe6e6 0%, #fc4b32 100%); */
+  background: linear-gradient(90deg, #eebc8b 0%, #ffffff 100%);
+  border-radius: 8px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.free-delivery-progress-text {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(252, 75, 50, 0.12);
+}
+
+@media (max-width: 768px) {
+  .free-delivery-progress-container {
+    max-width: 100%;
+    margin: 8px 0 0 0;
+    align-items: stretch;
+  }
+  .free-delivery-progress-bar-bg {
+    height: 8px;
+  }
+  .free-delivery-progress-text {
+    font-size: 12px;
+  }
+}
