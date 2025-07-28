@@ -143,15 +143,46 @@ npm run dev
 
 ## 🖼️ Demo Screenshots
 
-| Cart Page | Contact | Delivery Info | Dishes |
-|-----------|---------|---------------|--------|
-| ![Cart](images/cart.png) | ![Contact](images/contact.png) | ![Delivery Info](images/delivery_info.png) | ![Dishes](images/dishes.png) |
-
-| Dishes 2 | Explore Menu | Landing Page | Mobile App |
-|----------|--------------|--------------|------------|
-| ![Dishes 2](images/dishes2.png) | ![Explore Menu](images/explore_menu.png) | ![Landing](images/landing_pg.png) | ![Mobile App](images/mobile_app.png) |
+### 🛒 Cart Page
+![Cart](images/cart.png)
 
 ---
+
+### 📞 Contact
+![Contact](images/contact.png)
+
+---
+
+### 🚚 Delivery Info
+![Delivery Info](images/delivery_info.png)
+
+---
+
+### 🍽️ Dishes
+![Dishes](images/dishes.png)
+
+---
+
+### 🍱 Dishes 2
+![Dishes 2](images/dishes2.png)
+
+---
+
+### 📋 Explore Menu
+![Explore Menu](images/explore_menu.png)
+
+---
+
+### 🏠 Landing Page
+![Landing](images/landing_pg.png)
+
+---
+
+### 📱 Mobile App
+![Mobile App](images/mobile_app.png)
+
+---
+
 
 ## 📁 Project Structure
 
