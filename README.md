@@ -5,7 +5,7 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
 ---
 
 ![Foodie Home Demo - Light Mode](images/foodie-home-light.png)
-*<sup>Main homepage (Light Mode). Swap the image URL above for your own screenshot.</sup>*
+*<sup>Main homepage (Light Mode). </sup>*
 
 ---
 
