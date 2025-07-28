@@ -101,8 +101,6 @@ npm run dev
 
 #### Backend
 
-In another terminal, from the project root:
-
 ```bash
 cd backend 
 npm install
