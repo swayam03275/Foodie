@@ -15,7 +15,6 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
   - [🖥️ Frontend](#️-frontend)
   - [🌐 Backend](#-backend)
 - [✨ Key Features](#-key-features)
-- [🌗 Dark Mode Support](#-dark-mode-support)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [📦 Installation](#-installation)
