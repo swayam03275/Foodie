@@ -17,10 +17,12 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
 - [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
-  - [📦 Installation](#-installation)
+  - [🐳 Docker Setup (Recommended)](#-docker-setup-recommended)
+  - [📦 Manual Installation](#-manual-installation)
   - [🔧 Development Setup](#-development-setup)
   - [⚙️ Environment Variables](#-environment-variables)
 - [📁 Project Structure](#-project-structure)
+- [🐳 Docker Commands](#-docker-commands)
 - [🧪 Linting](#-linting)
 - [🧰 Scripts](#-scripts)
 - [📝 Notes](#-notes)
@@ -69,9 +71,10 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
 
 ---
 
-### 📦 Installation
+### 📦 Manual Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/your-username/foodie.git
 cd foodie
 ```
@@ -116,7 +119,8 @@ RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 **Start Backend:**
 
 ```bash
-node server.js
+cd backend
+npm run server
 ```
 
 > Backend runs at [`http://localhost:4000`](http://localhost:4000)
@@ -162,7 +166,11 @@ npm run dev
 ESLint is pre-configured for React and Hooks.
 
 ```bash
-npm run lint
+# Frontend linting
+cd frontend && npm run lint
+
+# Admin linting
+cd admin && npm run lint
 ```
 
 ---

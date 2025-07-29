@@ -17,6 +17,7 @@ import {
   Moon,
   X,
   AlignJustify,
+  Utensils,
 } from "lucide-react";
 
 const Navbar = ({ setShowLogin }) => {
@@ -49,6 +50,14 @@ const Navbar = ({ setShowLogin }) => {
         >
           <Home size={18} />
           <span>Home</span>
+        </Link>
+        <Link
+          to="/restaurants"
+          onClick={() => setMenu("restaurants")}
+          className={`nav-item ${menu === "restaurants" ? "active" : ""}`}
+        >
+          <Utensils size={18} />
+          <span>Restaurants</span>
         </Link>
         <a
           href="#explore-menu"
