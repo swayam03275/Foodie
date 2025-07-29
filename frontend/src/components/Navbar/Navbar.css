@@ -213,6 +213,64 @@
   max-width: none; 
 }
 
+/* Mobile Actions Styling */
+.mobile-actions {
+  display: none;
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.mobile-actions .nav-item,
+.mobile-actions .theme-toggle,
+.mobile-actions .signin-button {
+  width: 90%;
+  max-width: 300px;
+  justify-content: center;
+  margin: 5px auto;
+}
+
+.mobile-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--theme-toggle-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.mobile-cart {
+  position: relative;
+}
+
+.mobile-cart .cart-dot {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+}
+
+.mobile-signin {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 
 @media (max-width: 1200px) {
   .navbar {
