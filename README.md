@@ -1,11 +1,9 @@
 # 🍴 Foodie — Full-Stack Restaurant App
 
-A full-stack web application for browsing, listing, and managing a variety of food items. Built using React (Frontend), Express.js (Backend), and MongoDB with complete Docker support for seamless development and deployment.
-
----
+A full-stack web application for browsing, listing, and managing a variety of food items. Built using React (Frontend), Express.js (Backend), and MongoDB, with complete Docker support for seamless development and deployment.
 
 ![Foodie Homepage](images/foodie-home-light.png)
-*<sup>Homepage - Light Mode</sup>*
+<sup>Homepage – Light Mode</sup>
 
 ---
 
@@ -36,6 +34,7 @@ A full-stack web application for browsing, listing, and managing a variety of fo
 ## 🔧 Tech Stack
 
 ### 🖥️ Frontend
+
 - **React 18.3**
 - **Vite** (fast development tooling)
 - **React Router DOM** (routing)
@@ -43,20 +42,23 @@ A full-stack web application for browsing, listing, and managing a variety of fo
 - **ESLint** (linting)
 
 ### 🌐 Backend
+
 - **Node.js + Express**
 - **MongoDB** with **Mongoose**
 - **CORS + JSON Middleware**
 - **dotenv** (environment management)
 - **Razorpay** (payment gateway)
-- **Multer** - File upload handling
-- **Modular API Routing** - Organized route structure
+- **Multer** (file uploads)
+- **Modular API Routing**
 
 ### 🗄️ Database
-- **MongoDB** - NoSQL database for data storage
+
+- **MongoDB** (NoSQL data storage)
 
 ### 🐳 DevOps
-- **Docker** - Containerization for all services
-- **Docker Compose** - Multi-service orchestration
+
+- **Docker** (Containerization)
+- **Docker Compose** (Multi-service orchestration)
 
 ---
 
@@ -74,13 +76,14 @@ A full-stack web application for browsing, listing, and managing a variety of fo
 ## 🚀 Getting Started
 
 ### Prerequisites
-Choose one of the following setups:
 
-**For Docker Setup (Recommended):**
+#### Docker Setup (Recommended)
+
 - Docker Desktop
 - Docker Compose
 
-**For Manual Setup:**
+#### Manual Setup
+
 - Node.js (v16 or above)
 - npm or yarn
 - MongoDB (local or cloud)
@@ -194,6 +197,22 @@ npm run server
 # Make sure MongoDB is running locally
 mongod
 ```
+
+---
+
+### Environment Variables
+The application uses the following environment variables:
+
+**Backend:**
+- `MONGODB_URI`: MongoDB connection string
+- `JWT_SECRET`: Secret key for JWT tokens
+- `PORT`: Server port (default: 4000)
+
+**Frontend:**
+- `REACT_APP_API_URL`: Backend API URL
+
+**Admin:**
+- `VITE_API_URL`: Backend API URL for Vite
 
 ---
 
@@ -311,20 +330,6 @@ cd admin && npm run lint
 ---
 
 ## 📝 Notes
-
-### Environment Variables
-The application uses the following environment variables:
-
-**Backend:**
-- `MONGODB_URI`: MongoDB connection string
-- `JWT_SECRET`: Secret key for JWT tokens
-- `PORT`: Server port (default: 4000)
-
-**Frontend:**
-- `REACT_APP_API_URL`: Backend API URL
-
-**Admin:**
-- `VITE_API_URL`: Backend API URL for Vite
 
 ### Database Configuration
 - **Docker**: MongoDB runs automatically with authentication
