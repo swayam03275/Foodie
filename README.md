@@ -60,12 +60,6 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
 
 ---
 
-## 🌗 Dark Mode Support
-
-Switch between themes using the toggle in the UI. Custom styling ensures seamless UX in both modes.
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
