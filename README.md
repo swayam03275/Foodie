@@ -1,11 +1,11 @@
-# 🍽️ Foodie — All Types of Food Available
+# 🍴 Foodie — Full-Stack Restaurant App
 
-A modern full-stack web application for browsing, ordering, and managing a wide variety of food items. Built using **React** (Frontend) and **Express.js** (Backend) with seamless MongoDB integration and rapid development tooling via **Vite**.
+A modern full-stack web application for browsing, ordering, and managing a wide variety of food items. Built using **React** (Frontend) and **Express.js** (Backend), integrated with **MongoDB**, and developed rapidly using **Vite**.
 
 ---
 
-![Foodie Home Demo - Light Mode](images/foodie-home-light.png)
-*<sup>Main homepage (Light Mode). </sup>*
+![Foodie Homepage](images/foodie-home-light.png)
+*<sup>Homepage - Light Mode</sup>*
 
 ---
 
@@ -21,7 +21,6 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
   - [📦 Installation](#-installation)
   - [🔧 Development Setup](#-development-setup)
   - [⚙️ Environment Variables](#-environment-variables)
-- [🖼️ Demo Screenshots](#-demo-screenshots)
 - [📁 Project Structure](#-project-structure)
 - [🧪 Linting](#-linting)
 - [🧰 Scripts](#-scripts)
@@ -36,36 +35,34 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
 
 ### 🖥️ Frontend
 - **React 18.3**
-- **Vite** (super-fast build tool)
-- **React Router DOM** (client-side routing)
+- **Vite** (fast development tooling)
+- **React Router DOM** (routing)
 - **GSAP** (animations)
-- **ESLint** (code linting & style)
+- **ESLint** (linting)
 
 ### 🌐 Backend
 - **Node.js + Express**
 - **MongoDB** with **Mongoose**
 - **CORS + JSON Middleware**
-- **dotenv** (for environment variables)
-- **Razorpay** (payment gateway integration)
+- **dotenv** (environment management)
+- **Razorpay** (payment gateway)
 
 ---
 
 ## ✨ Key Features
 
-- 🥗 **Browse a wide variety of food items**
-- 🛒 **Add items to cart and manage orders**
-- 🖤 **Wishlist and user authentication**
-- 🔄 **Switch between light and dark mode**
-- 💳 **Online payment (Razorpay)**
-- 📱 **Mobile responsive UI**
-- 🍴 **Modern, extensible design**
+- 🥗 **Explore a variety of dishes**
+- 🛒 **Add to cart, checkout, and order**
+- 🖤 **Wishlist and user auth**
+- 🌗 **Light/Dark mode toggle**
+- 💳 **Online payment with Razorpay**
+- 📱 **Mobile-friendly responsive UI**
 
 ---
 
 ## 🌗 Dark Mode Support
 
-![Foodie Dark Mode Demo](images/foodie-dark-mode.png)
-*<sup>Example: Toggle between Light and Dark Modes using the switch in the UI.</sup>*
+Switch between themes using the toggle in the UI. Custom styling ensures seamless UX in both modes.
 
 ---
 
@@ -73,9 +70,9 @@ A modern full-stack web application for browsing, ordering, and managing a wide 
 
 ### Prerequisites
 
-- **Node.js** (v16 or above)
-- **npm** or **yarn**
-- **MongoDB** locally or remote (e.g., [MongoDB Atlas](https://www.mongodb.com/cloud/atlas))
+- Node.js (v16+)
+- npm or yarn
+- MongoDB (local or [Atlas](https://www.mongodb.com/cloud/atlas))
 
 ---
 
@@ -140,50 +137,6 @@ npm run dev
 > Frontend typically runs at [`http://localhost:5173`](http://localhost:5173)
 
 ---
-
-## 🖼️ Demo Screenshots
-
-### 🛒 Cart Page
-![Cart](images/cart.png)
-
----
-
-### 📞 Contact
-![Contact](images/contact.png)
-
----
-
-### 🚚 Delivery Info
-![Delivery Info](images/delivery_info.png)
-
----
-
-### 🍽️ Dishes
-![Dishes](images/dishes.png)
-
----
-
-### 🍱 Dishes 2
-![Dishes 2](images/dishes2.png)
-
----
-
-### 📋 Explore Menu
-![Explore Menu](images/explore_menu.png)
-
----
-
-### 🏠 Landing Page
-![Landing](images/landing_pg.png)
-
----
-
-### 📱 Mobile App
-![Mobile App](images/mobile_app.png)
-
----
-
-
 ## 📁 Project Structure
 
 ```
