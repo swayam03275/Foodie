@@ -1,21 +1,25 @@
-# 🍽️ Foodie - All Types of Food Available
+# 🍴 Foodie — Full-Stack Restaurant App
 
-A full-stack web application for browsing, listing, and managing a variety of food items. Built using React (Frontend), Express.js (Backend), and MongoDB with complete Docker support for seamless development and deployment.
+A full-stack web application for browsing, listing, and managing a variety of food items. Built using React (Frontend), Express.js (Backend), and MongoDB, with complete Docker support for seamless development and deployment.
+
+![Foodie Homepage](images/foodie-home-light.png)
+<sup>Homepage – Light Mode</sup>
 
 ---
 
-<details>
-  <summary><strong>📑 Table of Contents</strong></summary>
+## 📑 Table of Contents
 
 - [🔧 Tech Stack](#-tech-stack)
   - [🖥️ Frontend](#️-frontend)
   - [🌐 Backend](#-backend)
   - [🗄️ Database](#️-database)
+- [✨ Key Features](#-key-features)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [🐳 Docker Setup (Recommended)](#-docker-setup-recommended)
   - [📦 Manual Installation](#-manual-installation)
   - [🔧 Development Setup](#-development-setup)
+  - [⚙️ Environment Variables](#-environment-variables)
 - [📁 Project Structure](#-project-structure)
 - [🐳 Docker Commands](#-docker-commands)
 - [🧪 Linting](#-linting)
@@ -25,43 +29,61 @@ A full-stack web application for browsing, listing, and managing a variety of fo
 - [📄 License](#-license)
 - [🙌 Acknowledgements](#-acknowledgements)
 
-  </details>
-
 ---
 
 ## 🔧 Tech Stack
 
 ### 🖥️ Frontend
-- **React 18.3** - User interface
-- **Vite** - Fast build tool and dev server
-- **React Router DOM** - Client-side routing
-- **ESLint** - Linting and code style enforcement
+
+- **React 18.3**
+- **Vite** (fast development tooling)
+- **React Router DOM** (routing)
+- **GSAP** (animations)
+- **ESLint** (linting)
 
 ### 🌐 Backend
-- **Node.js + Express** - REST API server
-- **CORS + JSON Middleware** - Cross-origin requests
-- **Multer** - File upload handling
-- **Modular API Routing** - Organized route structure
+
+- **Node.js + Express**
+- **MongoDB** with **Mongoose**
+- **CORS + JSON Middleware**
+- **dotenv** (environment management)
+- **Razorpay** (payment gateway)
+- **Multer** (file uploads)
+- **Modular API Routing**
 
 ### 🗄️ Database
-- **MongoDB** - NoSQL database for data storage
+
+- **MongoDB** (NoSQL data storage)
 
 ### 🐳 DevOps
-- **Docker** - Containerization for all services
-- **Docker Compose** - Multi-service orchestration
+
+- **Docker** (Containerization)
+- **Docker Compose** (Multi-service orchestration)
+
+---
+
+## ✨ Key Features
+
+- 🥗 **Explore a variety of dishes**
+- 🛒 **Add to cart, checkout, and order**
+- 🖤 **Wishlist and user auth**
+- 🌗 **Light/Dark mode toggle**
+- 💳 **Online payment with Razorpay**
+- 📱 **Mobile-friendly responsive UI**
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-Choose one of the following setups:
 
-**For Docker Setup (Recommended):**
+#### Docker Setup (Recommended)
+
 - Docker Desktop
 - Docker Compose
 
-**For Manual Setup:**
+#### Manual Setup
+
 - Node.js (v16 or above)
 - npm or yarn
 - MongoDB (local or cloud)
@@ -101,15 +123,39 @@ docker-compose up --build
 # Clone the repository
 git clone https://github.com/your-username/foodie.git
 cd foodie
-
-# Install dependencies for all services
-cd frontend && npm install && cd ..
-cd backend && npm install && cd ..
-cd admin && npm install && cd ..
 ```
 
 ---
 
+#### Frontend
+
+```bash
+cd frontend
+npm install
+npm install gsap
+npm run dev
+```
+
+---
+
+#### Backend
+
+```bash
+cd backend 
+npm install
+npm install dotenv
+```
+
+---
+
+#### Admin
+
+```bash
+cd admin
+npm install
+```
+
+---
 ### 🔧 Development Setup
 
 #### Docker Development
@@ -151,6 +197,22 @@ npm run server
 # Make sure MongoDB is running locally
 mongod
 ```
+
+---
+
+### Environment Variables
+The application uses the following environment variables:
+
+**Backend:**
+- `MONGODB_URI`: MongoDB connection string
+- `JWT_SECRET`: Secret key for JWT tokens
+- `PORT`: Server port (default: 4000)
+
+**Frontend:**
+- `REACT_APP_API_URL`: Backend API URL
+
+**Admin:**
+- `VITE_API_URL`: Backend API URL for Vite
 
 ---
 
@@ -235,10 +297,9 @@ docker-compose logs mongodb
 ```
 
 ---
-
 ## 🧪 Linting
 
-ESLint is pre-configured with React and Hooks rules for frontend and admin.
+ESLint is pre-configured for React and Hooks.
 
 ```bash
 # Frontend linting
@@ -269,20 +330,6 @@ cd admin && npm run lint
 ---
 
 ## 📝 Notes
-
-### Environment Variables
-The application uses the following environment variables:
-
-**Backend:**
-- `MONGODB_URI`: MongoDB connection string
-- `JWT_SECRET`: Secret key for JWT tokens
-- `PORT`: Server port (default: 4000)
-
-**Frontend:**
-- `REACT_APP_API_URL`: Backend API URL
-
-**Admin:**
-- `VITE_API_URL`: Backend API URL for Vite
 
 ### Database Configuration
 - **Docker**: MongoDB runs automatically with authentication
@@ -319,7 +366,7 @@ We welcome contributions to the Foodie project! If you find this project helpful
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
@@ -330,3 +377,4 @@ This project is licensed under the MIT License.
 - [Express](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Docker](https://www.docker.com/)
+
