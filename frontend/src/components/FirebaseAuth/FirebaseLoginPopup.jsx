@@ -107,22 +107,43 @@ const FirebaseLoginPopup = ({ setShowLogin }) => {
     setIsLoading(true);
 
     try {
+      console.log(`FirebaseLoginPopup: Starting ${provider} login...`);
+      let result;
+      
       switch (provider) {
         case 'google':
-          await loginWithGoogle();
+          result = await loginWithGoogle();
           break;
         case 'facebook':
-          await loginWithFacebook();
+          result = await loginWithFacebook();
           break;
         case 'twitter':
-          await loginWithTwitter();
+          result = await loginWithTwitter();
           break;
         default:
           throw new Error('Invalid provider');
       }
-      setShowLogin(false);
+      
+      console.log(`FirebaseLoginPopup: ${provider} login result:`, result);
+      
+      // Close popup immediately if login was successful
+      if (result) {
+        console.log('FirebaseLoginPopup: Login successful, closing popup immediately');
+        setShowLogin(false);
+        // Don't wait for any background operations
+      } else {
+        console.log('FirebaseLoginPopup: Login returned null, keeping popup open');
+      }
     } catch (error) {
-      console.error('Social login error:', error);
+      console.error(`FirebaseLoginPopup: ${provider} login error:`, error);
+      
+      // Only show error for actual errors, not popup closed events
+      if (error.message !== 'POPUP_CLOSED') {
+        console.error('Social login error:', error);
+        toast.error(`${provider} login failed. Please try again.`);
+      } else {
+        console.log('FirebaseLoginPopup: Popup was closed by user');
+      }
     } finally {
       setIsLoading(false);
     }

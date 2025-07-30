@@ -70,17 +70,34 @@ export const AuthProvider = ({ children }) => {
   const loginWithGoogle = async () => {
     try {
       setAuthError(null);
-      setLoading(true);
+      // Don't set loading here since it's handled by the popup component
+      console.log('AuthContext: Starting Google login...');
+      
       const user = await signInWithGoogle();
-      toast.success('Logged in with Google successfully!');
-      return user;
+      
+      if (user) {
+        console.log('AuthContext: Google login successful for user:', user.email);
+        // Show success message immediately, don't wait for background operations
+        toast.success('Logged in with Google successfully!');
+        return user;
+      } else {
+        console.log('AuthContext: Google login returned null (popup closed)');
+        return null;
+      }
     } catch (error) {
+      console.error('AuthContext: Google login error:', error);
+      
+      // Handle popup closed by user gracefully
+      if (error.message === 'POPUP_CLOSED') {
+        console.log('AuthContext: Popup was closed by user');
+        // Don't show error toast for popup closed
+        return null;
+      }
+      
       const errorMessage = getErrorMessage(error.code);
       setAuthError(errorMessage);
       toast.error(errorMessage);
       throw error;
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -173,6 +190,12 @@ export const AuthProvider = ({ children }) => {
         return 'Another popup is already open. Please close it and try again.';
       case 'auth/popup-blocked':
         return 'Pop-up blocked by browser. Please allow pop-ups and try again.';
+      case 'auth/unauthorized-domain':
+        return 'This domain is not authorized for OAuth operations.';
+      case 'auth/operation-not-allowed':
+        return 'Google sign-in is not enabled. Please contact support.';
+      case 'auth/invalid-credential':
+        return 'The credential is invalid or has expired.';
       default:
         return 'An error occurred. Please try again.';
     }

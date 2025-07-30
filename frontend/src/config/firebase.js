@@ -39,10 +39,15 @@ export const googleProvider = new GoogleAuthProvider();
 export const facebookProvider = new FacebookAuthProvider();
 export const twitterProvider = new TwitterAuthProvider();
 
-// Configure Google provider
+// Configure Google provider for faster authentication
 googleProvider.setCustomParameters({
-  prompt: 'select_account'
+  prompt: 'select_account',
+  // Remove access_type to reduce token exchange time
 });
+
+// Add only essential scopes to reduce permission request time
+googleProvider.addScope('profile');
+googleProvider.addScope('email');
 
 // Auth functions
 export const createUserAccount = async (email, password, displayName) => {
@@ -99,12 +104,37 @@ export const signInUser = async (email, password) => {
 
 export const signInWithGoogle = async () => {
   try {
+    console.log('Starting Google sign-in...');
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
+    console.log('Google sign-in successful:', user.email);
     
-    // Check if user document exists, if not create it
+    // Create user document in background (don't wait for it)
+    // This prevents blocking the login flow
+    createUserDocumentInBackground(user);
+    
+    return user;
+  } catch (error) {
+    console.error('Google sign-in error:', error);
+    // Handle specific Google auth errors
+    if (error.code === 'auth/popup-closed-by-user' || error.code === 'auth/cancelled-popup-request') {
+      // Don't throw error if user just closed the popup
+      console.log('Popup was closed by user');
+      throw new Error('POPUP_CLOSED');
+    }
+    
+    // For other errors, throw them so they can be handled by the calling function
+    throw error;
+  }
+};
+
+// Helper function to create user document in background
+const createUserDocumentInBackground = async (user) => {
+  try {
+    console.log('Checking/creating user document in background...');
     const userDoc = await getDoc(doc(db, 'users', user.uid));
     if (!userDoc.exists()) {
+      console.log('Creating new user document...');
       await setDoc(doc(db, 'users', user.uid), {
         uid: user.uid,
         email: user.email,
@@ -113,11 +143,13 @@ export const signInWithGoogle = async () => {
         createdAt: new Date().toISOString(),
         authProvider: 'google'
       });
+      console.log('User document created successfully');
+    } else {
+      console.log('User document already exists');
     }
-    
-    return user;
-  } catch (error) {
-    throw error;
+  } catch (firestoreError) {
+    // Log Firestore error but don't fail anything since this is background
+    console.warn('Failed to create user document in Firestore (background):', firestoreError);
   }
 };
 
