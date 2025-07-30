@@ -34,7 +34,7 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <div className={`navbar ${theme === "dark" ? "navbar-dark" : ""}`}>
       <Link to="/" className="navbar-logo">
-        <img src={assets.foodie_icon} alt="app icon" className="app-icon" />
+        <img src={assets.foodie_icon} alt="app icon" className="app-icon " />
       </Link>
 
       {/* Hamburger Icon */}
