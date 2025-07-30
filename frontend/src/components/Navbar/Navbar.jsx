@@ -18,6 +18,7 @@ import {
   X,
   AlignJustify,
   Utensils,
+  HelpCircle,
 } from "lucide-react";
 
 const Navbar = ({ setShowLogin }) => {
@@ -86,6 +87,14 @@ const Navbar = ({ setShowLogin }) => {
         >
           <Phone size={18} />
           <span>Contact</span>
+        </a>
+        <a
+          href="#faq"
+          onClick={() => setMenu("faq")}
+          className={`nav-item ${menu === "faq" ? "active" : ""}`}
+        >
+          <HelpCircle size={18} />
+          <span>FAQ</span>
         </a>
       </ul>
 
