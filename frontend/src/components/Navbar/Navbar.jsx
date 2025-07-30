@@ -94,29 +94,26 @@ const Navbar = ({ setShowLogin }) => {
           <Phone size={18} />
           <span>Contact</span>
         </a>
-        
-        {/* Mobile Actions */}
-        <div className="mobile-actions">
-          <button className="theme-toggle mobile-theme-toggle" onClick={toggleTheme}>
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            <span>Theme</span>
-          </button>
-          
-          <Link to="/cart" className="nav-item mobile-cart" onClick={() => setMobileMenuOpen(false)}>
-            <ShoppingCart size={20} />
-            <span>Cart</span>
-            <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
-          </Link>
-          
-          <button className="signin-button mobile-signin" onClick={() => {
-            setShowLogin(true);
-            setMobileMenuOpen(false);
-          }}>
-            <User size={18} />
-            <span>Sign In</span>
-          </button>
-        </div>
       </ul>
+
+      {/* Mobile Actions - Always visible on mobile */}
+      <div className="mobile-actions">
+        <button className="theme-toggle mobile-theme-toggle" onClick={toggleTheme}>
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+        
+        <Link to="/cart" className="nav-item mobile-cart" onClick={() => setMobileMenuOpen(false)}>
+          <ShoppingCart size={20} />
+          <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
+        </Link>
+        
+        <button className="signin-button mobile-signin" onClick={() => {
+          setShowLogin(true);
+          setMobileMenuOpen(false);
+        }}>
+          <User size={18} />
+        </button>
+      </div>
 
       <div className="navbar-right">
         <button className="theme-toggle" onClick={toggleTheme}>
