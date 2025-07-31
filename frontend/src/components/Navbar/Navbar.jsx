@@ -34,7 +34,7 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <div className={`navbar ${theme === "dark" ? "navbar-dark" : ""}`}>
       <Link to="/" className="navbar-logo">
-        <img src={assets.foodie_icon} alt="app icon" className="app-icon" />
+        <img src={assets.foodie_icon} alt="app icon" className="app-icon " />
       </Link>
 
       {/* Hamburger Icon */}
@@ -46,7 +46,10 @@ const Navbar = ({ setShowLogin }) => {
       <ul className={`navbar-menu ${mobileMenuOpen ? "open" : ""}`}>
         <Link
           to="/"
-          onClick={() => setMenu("home")}
+          onClick={() => {
+            setMenu("home");
+            setMobileMenuOpen(false);
+          }}
           className={`nav-item ${menu === "home" ? "active" : ""}`}
         >
           <Home size={18} />
@@ -62,7 +65,10 @@ const Navbar = ({ setShowLogin }) => {
         </Link>
         <a
           href="#explore-menu"
-          onClick={() => setMenu("menu")}
+          onClick={() => {
+            setMenu("menu");
+            setMobileMenuOpen(false);
+          }}
           className={`nav-item ${menu === "menu" ? "active" : ""}`}
         >
           <Menu size={18} />
@@ -70,19 +76,27 @@ const Navbar = ({ setShowLogin }) => {
         </a>
         <a
           href="#appdownload"
-          onClick={() => setMenu("mobile-app")}
+          onClick={() => {
+            setMenu("mobile-app");
+            setMobileMenuOpen(false);
+          }}
           className={`nav-item ${menu === "mobile-app" ? "active" : ""}`}
         >
           <Smartphone size={18} />
           <span>Mobile App</span>
         </a>
-        <Link to="/wishlist" className="nav-item">
+        <Link to="/wishlist"
+        onClick={() => setMenu("wishlist")}
+          className={`nav-item ${menu === "wishlist" ? "active" : ""}`}>
           <Heart size={18} />
           <span>Wishlist</span>
         </Link>
         <a
           href="#footer"
-          onClick={() => setMenu("contact-us")}
+          onClick={() => {
+            setMenu("contact-us");
+            setMobileMenuOpen(false);
+          }}
           className={`nav-item ${menu === "contact-us" ? "active" : ""}`}
         >
           <Phone size={18} />
@@ -97,6 +111,25 @@ const Navbar = ({ setShowLogin }) => {
           <span>FAQ</span>
         </a>
       </ul>
+
+      {/* Mobile Actions - Always visible on mobile */}
+      <div className="mobile-actions">
+        <button className="theme-toggle mobile-theme-toggle" onClick={toggleTheme}>
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+        
+        <Link to="/cart" className="nav-item mobile-cart" onClick={() => setMobileMenuOpen(false)}>
+          <ShoppingCart size={20} />
+          <div className={getTotalCartAmount() === 0 ? "" : "cart-dot"}></div>
+        </Link>
+        
+        <button className="signin-button mobile-signin" onClick={() => {
+          setShowLogin(true);
+          setMobileMenuOpen(false);
+        }}>
+          <User size={18} />
+        </button>
+      </div>
 
       <div className="navbar-right">
         <button className="theme-toggle" onClick={toggleTheme}>
