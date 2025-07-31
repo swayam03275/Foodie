@@ -1,6 +1,6 @@
 # 🍴 Foodie — Full-Stack Restaurant App
 
-A full-stack web application for browsing, listing, and managing a variety of food items. Built using React (Frontend), Express.js (Backend), and MongoDB, with complete Docker support for seamless development and deployment.
+A full-stack web application for browsing, ordering, and managing food items. Built with React (Frontend), Express.js (Backend), MongoDB, and Firebase Authentication, featuring complete Docker support for seamless development and deployment.
 
 ![Foodie Homepage](images/foodie-home-light.png)
 <sup>Homepage – Light Mode</sup>
@@ -10,209 +10,242 @@ A full-stack web application for browsing, listing, and managing a variety of fo
 ## 📑 Table of Contents
 
 - [🔧 Tech Stack](#-tech-stack)
-  - [🖥️ Frontend](#️-frontend)
-  - [🌐 Backend](#-backend)
-  - [🗄️ Database](#️-database)
 - [✨ Key Features](#-key-features)
-- [🚀 Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [🐳 Docker Setup (Recommended)](#-docker-setup-recommended)
-  - [📦 Manual Installation](#-manual-installation)
-  - [🔧 Development Setup](#-development-setup)
-  - [⚙️ Environment Variables](#-environment-variables)
+- [🚀 Quick Start](#-quick-start)
+- [📦 Installation](#-installation)
+- [⚙️ Environment Setup](#-environment-setup)
+- [🔥 Firebase Setup](#-firebase-setup)
+- [🐳 Docker Setup](#-docker-setup)
 - [📁 Project Structure](#-project-structure)
-- [🐳 Docker Commands](#-docker-commands)
-- [🧪 Linting](#-linting)
-- [🧰 Scripts](#-scripts)
-- [📝 Notes](#-notes)
+- [🧪 Development](#-development)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
-- [🙌 Acknowledgements](#-acknowledgements)
 
 ---
 
 ## 🔧 Tech Stack
 
 ### 🖥️ Frontend
-
-- **React 18.3**
-- **Vite** (fast development tooling)
+- **React 18.3** with **Vite**
 - **React Router DOM** (routing)
+- **Firebase Authentication** (Google, Facebook, Twitter)
+- **React Hot Toast** (notifications)
+- **Lucide React** (icons)
 - **GSAP** (animations)
-- **ESLint** (linting)
 
 ### 🌐 Backend
-
 - **Node.js + Express**
 - **MongoDB** with **Mongoose**
-- **CORS + JSON Middleware**
-- **dotenv** (environment management)
+- **Firebase Admin SDK**
 - **Razorpay** (payment gateway)
 - **Multer** (file uploads)
-- **Modular API Routing**
+- **JWT** (authentication)
 
 ### 🗄️ Database
-
-- **MongoDB** (NoSQL data storage)
+- **MongoDB** (primary database)
+- **Firebase Firestore** (user profiles)
 
 ### 🐳 DevOps
-
-- **Docker** (Containerization)
-- **Docker Compose** (Multi-service orchestration)
+- **Docker & Docker Compose**
+- **Multi-stage builds**
+- **Environment-based configuration**
 
 ---
 
 ## ✨ Key Features
 
-- 🥗 **Explore a variety of dishes**
-- 🛒 **Add to cart, checkout, and order**
-- 🖤 **Wishlist and user auth**
-- 🌗 **Light/Dark mode toggle**
-- 💳 **Online payment with Razorpay**
-- 📱 **Mobile-friendly responsive UI**
+- 🔐 **Multi-provider Authentication** (Google, Facebook, Twitter, Email)
+- 🥗 **Browse and explore food items**
+- 🛒 **Shopping cart and checkout**
+- 💳 **Secure payments with Razorpay**
+- 👤 **User profiles and order history**
+- 🎨 **Responsive design**
+- 🏪 **Admin panel for food management**
+- 📱 **Mobile-friendly interface**
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
+- **Docker Desktop** (recommended)
+- **Node.js 16+** (for manual setup)
+- **MongoDB** (local or cloud)
+- **Firebase Project** (for authentication)
 
-#### Docker Setup (Recommended)
-
-- Docker Desktop
-- Docker Compose
-
-#### Manual Setup
-
-- Node.js (v16 or above)
-- npm or yarn
-- MongoDB (local or cloud)
-
----
-
-### 🐳 Docker Setup (Recommended)
-
-**One-command setup for the entire application:**
-
+### One-Command Setup (Docker)
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/foodie.git
-cd foodie
-
-# Start all services with Docker
+git clone https://github.com/Stranger1298/Foodie.git
+cd Foodie
+cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env
+cp admin/.env.example admin/.env
+# Edit .env files with your configurations
 docker-compose up --build
 ```
 
-**Access the application:**
+**Access Points:**
 - 🌐 **Frontend**: http://localhost:3000
 - 🛠️ **Admin Panel**: http://localhost:5173
 - 🔌 **Backend API**: http://localhost:4000
-- 🗄️ **MongoDB**: localhost:27017
-
-**Docker Services:**
-- **foodie-frontend**: React app (Port 3000)
-- **foodie-admin**: Admin panel (Port 5173)
-- **foodie-backend**: Express API (Port 4000)
-- **foodie-mongodb**: MongoDB database (Port 27017)
 
 ---
+## 📦 Installation
 
-### 📦 Manual Installation
-
+### 1. Clone Repository
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/foodie.git
-cd foodie
+git clone https://github.com/Stranger1298/Foodie.git
+cd Foodie
 ```
 
----
-
-#### Frontend
-
-```bash
-cd frontend
-npm install
-npm install gsap
-npm run dev
-```
-
----
-
-#### Backend
-
-```bash
-cd backend 
-npm install
-npm install dotenv
-```
-
----
-
-#### Admin
-
-```bash
-cd admin
-npm install
-```
-
----
-### 🔧 Development Setup
-
-#### Docker Development
-```bash
-# Start all services
-docker-compose up
-
-# Start in detached mode
-docker-compose up -d
-
-# View logs for specific service
-docker-compose logs frontend
-docker-compose logs backend
-docker-compose logs admin
-```
-
-#### Manual Development
-
-**Start Frontend:**
-```bash
-cd frontend
-npm run dev
-```
-
-**Start Admin Panel:**
-```bash
-cd admin
-npm run dev
-```
-
-**Start Backend:**
-```bash
-cd backend
-npm run server
-```
-
-**Start MongoDB:**
-```bash
-# Make sure MongoDB is running locally
-mongod
-```
-
----
-
-### Environment Variables
-The application uses the following environment variables:
+### 2. Install Dependencies
 
 **Backend:**
-- `MONGODB_URI`: MongoDB connection string
-- `JWT_SECRET`: Secret key for JWT tokens
-- `PORT`: Server port (default: 4000)
+```bash
+cd backend
+npm install
+```
 
 **Frontend:**
-- `REACT_APP_API_URL`: Backend API URL
+```bash
+cd frontend
+npm install
+```
 
 **Admin:**
-- `VITE_API_URL`: Backend API URL for Vite
+```bash
+cd admin
+npm install
+```
+
+---
+
+## ⚙️ Environment Setup
+
+### 1. Copy Environment Files
+```bash
+# Backend environment
+cp backend/.env.example backend/.env
+
+# Frontend environment
+cp frontend/.env.example frontend/.env
+
+# Admin environment
+cp admin/.env.example admin/.env
+```
+
+### 2. Backend Configuration (`backend/.env`)
+```env
+# Database
+MONGODB_URI=mongodb://localhost:27017/foodie
+
+# Payment Gateway
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_secret
+
+# Authentication
+JWT_SECRET=your_super_secret_jwt_key
+
+# Firebase Admin
+FIREBASE_PROJECT_ID=your_firebase_project_id
+FIREBASE_CLIENT_EMAIL=firebase-adminsdk-xxxxx@project.iam.gserviceaccount.com
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nYourKey\n-----END PRIVATE KEY-----\n"
+
+# Server
+PORT=4000
+```
+
+### 3. Frontend Configuration (`frontend/.env`)
+```env
+# Firebase Web Config
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=sender_id
+VITE_FIREBASE_APP_ID=app_id
+
+# API Endpoint
+VITE_API_URL=http://localhost:4000
+```
+
+### 4. Admin Configuration (`admin/.env`)
+```env
+# Backend API
+VITE_API_URL=http://localhost:4000
+NODE_ENV=development
+```
+
+---
+
+## 🔥 Firebase Setup
+
+### 1. Create Firebase Project
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Click "Create a project"
+3. Follow setup wizard
+
+### 2. Enable Authentication
+1. Navigate to **Authentication** → **Sign-in method**
+2. Enable **Google**, **Facebook**, **Twitter**
+3. Add authorized domains: `localhost`, `127.0.0.1`
+
+### 3. Create Web App
+1. Go to **Project Settings** → **General**
+2. Click "Add app" → **Web**
+3. Copy configuration to `frontend/.env`
+
+### 4. Generate Service Account
+1. Go to **Project Settings** → **Service accounts**
+2. Click "Generate new private key"
+3. Download JSON file
+4. Extract values for `backend/.env`:
+   - `project_id` → `FIREBASE_PROJECT_ID`
+   - `client_email` → `FIREBASE_CLIENT_EMAIL`  
+   - `private_key` → `FIREBASE_PRIVATE_KEY`
+
+### 5. Setup Firestore
+1. Go to **Firestore Database**
+2. Create database in test mode
+3. Update security rules:
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
+
+---
+
+## 🐳 Docker Setup
+
+### Production Setup
+```bash
+# Start all services
+docker-compose up --build
+
+# Run in background
+docker-compose up -d
+
+# Stop services
+docker-compose down
+```
+
+### Development with Docker
+```bash
+# View logs
+docker-compose logs -f backend
+
+# Execute commands in container
+docker-compose exec backend npm install new-package
+
+# Restart specific service
+docker-compose restart frontend
+```
 
 ---
 
@@ -220,161 +253,139 @@ The application uses the following environment variables:
 
 ```
 Foodie/
-├── frontend/                 # React frontend application
+├── frontend/                    # React frontend
 │   ├── src/
-│   ├── Dockerfile
-│   ├── .dockerignore
+│   │   ├── components/
+│   │   │   ├── FirebaseAuth/   # Authentication components
+│   │   │   ├── context/        # React contexts
+│   │   │   └── ...
+│   │   ├── config/
+│   │   │   └── firebase.js     # Firebase configuration
+│   │   ├── hooks/              # Custom hooks
+│   │   └── pages/              # Page components
+│   ├── .env.example
 │   └── package.json
-├── backend/                  # Express.js backend API
-│   ├── routes/
+├── backend/                     # Express API
 │   ├── config/
-│   ├── uploads/
-│   ├── server.js
-│   ├── Dockerfile
-│   ├── .dockerignore
-│   └── package.json
-├── admin/                    # React admin panel
+│   │   ├── db.js              # MongoDB connection
+│   │   └── firebase-admin.js   # Firebase Admin
+│   ├── controllers/            # Route controllers
+│   ├── models/                 # Database models
+│   ├── routes/                 # API routes
+│   ├── uploads/               # File uploads
+│   ├── .env.example
+│   └── server.js
+├── admin/                      # Admin panel
 │   ├── src/
-│   ├── Dockerfile
-│   ├── .dockerignore
+│   ├── .env.example
 │   └── package.json
-├── docker-compose.yml        # Multi-service orchestration
-├── .dockerignore            # Root Docker ignore file
-├── README.md
-└── CONTRIBUTING.md
+├── docker-compose.yml          # Multi-service setup
+└── README.md
 ```
 
 ---
 
-## 🐳 Docker Commands
+## 🧪 Development
 
-### Basic Operations
+### Manual Development
+
+**Start Backend:**
 ```bash
-# Build and start all services
-docker-compose up --build
-
-# Start services in background
-docker-compose up -d
-
-# Stop all services
-docker-compose down
-
-# Stop and remove volumes (⚠️ deletes database data)
-docker-compose down -v
-
-# Restart specific service
-docker-compose restart backend
-
-# View running containers
-docker-compose ps
+cd backend
+npm run server    # Development with nodemon
+npm start         # Production
 ```
 
-### Development Commands
+**Start Frontend:**
 ```bash
-# View logs for all services
-docker-compose logs
-
-# View logs for specific service
-docker-compose logs -f frontend
-
-# Execute commands in running container
-docker-compose exec backend npm install new-package
-
-# Rebuild specific service
-docker-compose build backend
+cd frontend
+npm run dev       # Development server
+npm run build     # Production build
+npm run preview   # Preview build
 ```
 
-### Database Management
+**Start Admin:**
 ```bash
-# Access MongoDB shell
-docker-compose exec mongodb mongosh
-
-# Backup database
-docker-compose exec mongodb mongodump --out /backup
-
-# View MongoDB logs
-docker-compose logs mongodb
+cd admin
+npm run dev       # Development server
+npm run build     # Production build
 ```
 
----
-## 🧪 Linting
+### Available Scripts
 
-ESLint is pre-configured for React and Hooks.
+| Service  | Command | Description |
+|----------|---------|-------------|
+| Backend  | `npm run server` | Start development server |
+| Backend  | `npm start` | Start production server |
+| Frontend | `npm run dev` | Start Vite dev server |
+| Frontend | `npm run build` | Build for production |
+| Frontend | `npm run lint` | Run ESLint |
+| Admin    | `npm run dev` | Start Vite dev server |
+| Admin    | `npm run build` | Build for production |
 
-```bash
-# Frontend linting
-cd frontend && npm run lint
+### Environment Variables Summary
 
-# Admin linting
-cd admin && npm run lint
-```
-
----
-
-## 🧰 Scripts
-
-### Frontend & Admin Scripts
-| Command        | Description                  |
-|----------------|------------------------------|
-| `npm run dev`  | Start Vite development server |
-| `npm run build`| Build for production |
-| `npm run preview` | Preview production build    |
-| `npm run lint` | Run ESLint checks             |
-
-### Backend Scripts
-| Command        | Description                  |
-|----------------|------------------------------|
-| `npm start`    | Start production server      |
-| `npm run server` | Start development server with nodemon |
-
----
-
-## 📝 Notes
-
-### Database Configuration
-- **Docker**: MongoDB runs automatically with authentication
-  - Username: `admin`
-  - Password: `password123`
-  - Database: `foodie`
-- **Manual**: Update `connectDB()` in `backend/config/db.js`
-
-### File Uploads
-- Backend handles file uploads via Multer
-- Files are stored in `backend/uploads/` directory
-- Docker setup includes volume mounting for persistence
+| File | Variables | Purpose |
+|------|-----------|---------|
+| `backend/.env` | MongoDB, JWT, Firebase Admin, Razorpay | Server configuration |
+| `frontend/.env` | Firebase Web Config, API URL | Client configuration |
+| `admin/.env` | API URL | Admin panel configuration |
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions to the Foodie project! If you find this project helpful, please consider:
+We welcome contributions! Here's how you can help:
 
-- ⭐ **Star this repository** to show your support and help others discover it
-- 🐛 Report bugs or suggest features through issues
-- 🔧 Submit pull requests for improvements
-- 📖 Help improve documentation
-- 🚀 For more info go to [CONTRIBUTING.md](CONTRIBUTING.md)
+1. **⭐ Star this repository** to show support
+2. **🐛 Report bugs** via GitHub Issues
+3. **💡 Suggest features** through discussions
+4. **🔧 Submit pull requests** for improvements
 
 ### Development Workflow
 1. Fork the repository
-2. Create a feature branch
-3. Use Docker for consistent development environment
-4. Test your changes with `docker-compose up --build`
-5. Submit a pull request
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Make changes and test with Docker: `docker-compose up --build`
+4. Commit changes: `git commit -m 'Add amazing feature'`
+5. Push to branch: `git push origin feature/amazing-feature`
+6. Open a Pull Request
+
+### Code Style
+- Use ESLint configuration provided
+- Follow existing code patterns
+- Add comments for complex logic
+- Update documentation as needed
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙌 Acknowledgements
+## � Acknowledgements
 
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Express](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)
-- [Docker](https://www.docker.com/)
+- [React](https://reactjs.org/) - Frontend framework
+- [Express.js](https://expressjs.com/) - Backend framework
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Firebase](https://firebase.google.com/) - Authentication & Firestore
+- [Vite](https://vitejs.dev/) - Build tool
+- [Docker](https://www.docker.com/) - Containerization
+- [Razorpay](https://razorpay.com/) - Payment gateway
+
+---
+
+**⚡ Quick Links:**
+- 📚 [Firebase Setup Guide](FIREBASE_SETUP.md)
+- 🤝 [Contributing Guidelines](CONTRIBUTING.md)
+- 🛡️ [Security Policy](SECURITY.md)
+- 📝 [Code of Conduct](CODE_OF_CONDUCT.md)
+
+---
+
+<div align="center">
+  <h3>Built with ❤️ by the Foodie Team</h3>
+  <p>⭐ Star this repo if you found it helpful!</p>
+</div>
 
