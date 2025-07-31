@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './FAQ.css';
-import { assets } from '../../assets/frontend_assets/assets';
 import { HelpCircle, Search, ChevronDown, ChevronUp } from 'lucide-react';
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [expandedItems, setExpandedItems] = useState(new Set());
+  const [expandedId, setExpandedId] = useState(null); // Only one expanded at a time
 
   // Dummy FAQ data
   const faqData = [
@@ -57,15 +56,9 @@ const FAQ = () => {
     item.answer.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Toggle FAQ item expansion
+  // Toggle expanded item
   const toggleItem = (id) => {
-    const newExpandedItems = new Set(expandedItems);
-    if (newExpandedItems.has(id)) {
-      newExpandedItems.delete(id);
-    } else {
-      newExpandedItems.add(id);
-    }
-    setExpandedItems(newExpandedItems);
+    setExpandedId(prevId => (prevId === id ? null : id));
   };
 
   return (
@@ -99,12 +92,12 @@ const FAQ = () => {
                   onClick={() => toggleItem(item.id)}
                 >
                   <h3>{item.question}</h3>
-                  {expandedItems.has(item.id) ? 
+                  {expandedId === item.id ? 
                     <ChevronUp size={20} className="faq-toggle" /> : 
                     <ChevronDown size={20} className="faq-toggle" />
                   }
                 </div>
-                <div className={`faq-answer ${expandedItems.has(item.id) ? 'expanded' : ''}`}>
+                <div className={`faq-answer ${expandedId === item.id ? 'expanded' : ''}`}>
                   <p>{item.answer}</p>
                 </div>
               </div>
@@ -125,4 +118,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ; 
+export default FAQ;
