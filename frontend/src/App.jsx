@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -18,7 +18,6 @@ import Chatbot from "./components/Chatbot/Chatbot";
 import FAQ from "./components/FAQ/FAQ";
 import { Toaster } from "react-hot-toast";
 import LoadingAnimation from './components/LoadingAnimation';
-import AuthDemo from './components/AuthDemo/AuthDemo';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -48,7 +47,6 @@ const App = () => {
         <Route path="/food/:id" element={<FoodDetail />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/restaurants" element={<Restaurants />} />
-        <Route path="/auth-demo" element={<AuthDemo />} />
       </Routes>
        
       <ScrollToTopButton />   {/* floating button */}
