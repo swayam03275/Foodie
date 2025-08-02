@@ -20,12 +20,15 @@ import {
   Utensils,
   HelpCircle,
 } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { getTotalCartAmount } = useContext(StoreContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -65,15 +68,27 @@ const Navbar = ({ setShowLogin }) => {
         </Link>
         <a
           href="#explore-menu"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault(); // prevent default anchor behavior
             setMenu("menu");
             setMobileMenuOpen(false);
+
+            if (location.pathname !== "/") {
+              localStorage.setItem("scrollToMenu", "true");
+              navigate("/");
+            } else {
+              const section = document.getElementById("explore-menu");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }
           }}
           className={`nav-item ${menu === "menu" ? "active" : ""}`}
         >
           <Menu size={18} />
           <span>Menu</span>
         </a>
+
         <a
           href="#appdownload"
           onClick={() => {
