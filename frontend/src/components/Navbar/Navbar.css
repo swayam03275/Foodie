@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   z-index: 1000;
-background: var(--navbar-bg);
-border: 1px solid var(--navbar-border); 
+  background: var(--navbar-bg);
+  border: 1px solid var(--navbar-border); 
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   padding: 15px 80px; 
   display: flex;
@@ -17,14 +17,11 @@ border: 1px solid var(--navbar-border);
 }
 /* as per theme*/
 :root {
-  --navbar-bg: rgba(255, 255, 255, 0.85); /* light frosted white */
+  --navbar-bg: #ffffff; /* light frosted white */
 }
 [data-theme="dark"] {
-  --navbar-bg: rgba(17, 21, 29, 0.85); /* dark frosted black */
+  --navbar-bg: #11151d; /* dark frosted black */
 }
-
-
-
 
 .navbar-logo {
   display: flex;
