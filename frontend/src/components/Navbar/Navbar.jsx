@@ -85,11 +85,9 @@ const Navbar = ({ setShowLogin }) => {
           <Smartphone size={18} />
           <span>Mobile App</span>
         </a>
-        <Link 
-          to="/wishlist" 
-          className="nav-item"
-          onClick={() => setMobileMenuOpen(false)}
-        >
+        <Link to="/wishlist"
+        onClick={() => setMenu("wishlist")}
+          className={`nav-item ${menu === "wishlist" ? "active" : ""}`}>
           <Heart size={18} />
           <span>Wishlist</span>
         </Link>
