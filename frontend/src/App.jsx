@@ -51,7 +51,9 @@ const App = () => {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/restaurants" element={<Restaurants />} />
+
             <Route path="/restaurant/:id" element={<RestaurantDetail />} />
+          </Route>
           </Routes>
 
           <ScrollToTopButton /> {/* floating button */}
