@@ -43,30 +43,24 @@ const ContactForm = () => {
     localStorage.removeItem("contactForm");
   };
 
+  
+
   return (
-    <div className="contact-section ">
-      <div className="contact-info">
-        <h4>STAY CONNECTED</h4>
+    <div className="contact-container">
+      <div className="contact-details">
+        <h3>Stay Connected!</h3>
         <h2>Get in Touch</h2>
         <p>
-          Have any questions, special requests, or feedback? Whether you're
-          planning a celebration, booking a table - we’re here for you!
+          Have any questions, special requests, or feedback? Whether you're planning a celebration,
+          booking a table – we're here for you!
         </p>
         <ul>
-          <li>
-            <strong>Address:</strong> ABC Restaurant, Haryana
-          </li>
-          <li>
-            <strong>Phone:</strong> +262 697 570 970
-          </li>
-          <li>
-            <strong>Email:</strong> Contact@foodie.com
-          </li>
-          <li>
-            <strong>Hours:</strong> Open 08:00 AM to 10:00 PM
-          </li>
+          <li><strong>Address:</strong> ABC Restaurant, Haryana</li>
+          <li><strong>Phone:</strong> +262 697 570 970</li>
+          <li><strong>Email:</strong> Contact@foodie.com</li>
+          <li><strong>Hours:</strong> Open 08:00 AM to 10:00 PM</li>
         </ul>
-
+       
         <div className="social-icons">
           <a
             href="https://wa.me/your-number"
@@ -92,45 +86,17 @@ const ContactForm = () => {
         </div>
       </div>
 
-      <div className="contact-form">
+      <form className="contact-form">
         <h3>Your Details</h3>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name *"
-            required
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address *"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-          />
-          <textarea
-            name="message"
-            placeholder="Comments / Questions *"
-            rows="4"
-            required
-            value={formData.message}
-            onChange={handleChange}
-          />
-          <button type="submit">CONTACT US</button>
-        </form>
-      </div>
+        <input type="text" placeholder="Name *" required />
+        <input type="email" placeholder="Email Address *" required />
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Comments / Questions *" required></textarea>
+        <button type="submit">CONTACT US</button>
+      </form>
     </div>
   );
 };
+
 
 export default ContactForm;
