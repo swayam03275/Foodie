@@ -13,3 +13,9 @@
 .navbar .profile {
     width: 40px;
 }
+
+.brand-text {
+  color: white;
+  font-size: 20px;
+  margin: 0 10px;
+}
