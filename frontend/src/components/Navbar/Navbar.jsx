@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 import { assets } from "../../assets/frontend_assets/assets";
 import { ThemeContext } from "../context/ThemeContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Home,
   Menu,
@@ -26,9 +29,24 @@ const Navbar = ({ setShowLogin }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { getTotalCartAmount } = useContext(StoreContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setUser(storedUser);
+  }, []);
+
 
   const toggleMenu = () => {
     setMobileMenuOpen((prev) => !prev);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    navigate("/"); // or window.location.reload();
   };
 
   return (
@@ -143,10 +161,20 @@ const Navbar = ({ setShowLogin }) => {
           </Link>
         </div>
 
-        <button className="signin-button" onClick={() => setShowLogin(true)}>
-          <User size={16} />
-          <span>Sign In</span>
-        </button>
+        {user ? (
+          <div className="user-info">
+            <div className="user-avatar">{user.name?.charAt(0).toUpperCase()}</div>
+            <span>{user.name}</span>
+            <button className="signin-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        ) : (
+          <button className="signin-button" onClick={() => setShowLogin(true)}>
+            <User size={16} />
+            <span>Sign In</span>
+          </button>
+        )}
       </div>
     </div>
   );
