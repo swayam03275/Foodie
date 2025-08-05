@@ -13,6 +13,7 @@ import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
 import Wishlist from "./pages/wishlist/wishlist";
 import Restaurants from "./pages/Restaurants/Restaurants";
+import RestaurantDetail from "./pages/Restaurants/RestaurantDetail";
 import Chatbot from "./components/Chatbot/Chatbot";
 import FAQ from "./components/FAQ/FAQ";
 import ContactPage from "./pages/Contactpage";
@@ -50,7 +51,11 @@ const App = () => {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/restaurants" element={<Restaurants />} />
+
+            <Route path="/restaurant/:id" element={<RestaurantDetail />} />
+        
           </Routes>
+
           <ScrollToTopButton /> {/* floating button */}
           <CartSummaryBar />
           <AppDownload />
