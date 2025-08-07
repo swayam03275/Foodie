@@ -24,6 +24,9 @@ import ScrollToTop from "../utility/ScrollToTop";
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return !!localStorage.getItem("authToken"); 
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
