@@ -12,6 +12,7 @@ import FoodDetail from "./components/FoodDetail/FoodDetail";
 import CartSummaryBar from "./components/CartSummaryBar/CartSummaryBar";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
 import Wishlist from "./pages/wishlist/wishlist";
+import SharedWishlist from "./pages/wishlist/SharedWishlist";
 import Restaurants from "./pages/Restaurants/Restaurants";
 import RestaurantDetail from "./pages/Restaurants/RestaurantDetail";
 import Chatbot from "./components/Chatbot/Chatbot";
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/order" element={<PlaceOrder />} />
             <Route path="/food/:id" element={<FoodDetail />} />
             <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/wishlist/:userId" element={<SharedWishlist />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/restaurants" element={<Restaurants />} />
 
